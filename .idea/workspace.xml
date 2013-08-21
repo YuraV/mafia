@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3ea4770-db5d-45e4-9ffc-a7221577ad15" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mafia.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -10,6 +11,7 @@
     <file path="/database.yml" changelist="d3ea4770-db5d-45e4-9ffc-a7221577ad15" time="1377115083430" ignored="false" />
     <file path="/Gemfile" changelist="d3ea4770-db5d-45e4-9ffc-a7221577ad15" time="1377114730990" ignored="false" />
     <file path="$PROJECT_DIR$/config/routes.rb" changelist="d3ea4770-db5d-45e4-9ffc-a7221577ad15" time="1377115037689" ignored="false" />
+    <file path="/.gitignore" changelist="d3ea4770-db5d-45e4-9ffc-a7221577ad15" time="1377115207678" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,10 +40,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.yml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="database.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/database.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="20" selection-start="967" selection-end="967" vertical-scroll-proportion="0.7936508">
+            <state line="25" column="16" selection-start="695" selection-end="695" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="0" selection-start="451" selection-end="451" vertical-scroll-proportion="0.31746033">
               <folding />
             </state>
           </provider>
@@ -76,6 +87,7 @@
       <list>
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/database.yml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -544,7 +556,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="20" selection-start="967" selection-end="967" vertical-scroll-proportion="0.7936508">
+        <state line="25" column="16" selection-start="695" selection-end="695" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="451" selection-end="451" vertical-scroll-proportion="0.31746033">
           <folding />
         </state>
       </provider>
