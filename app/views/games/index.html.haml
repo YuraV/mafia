@@ -1,1 +1,12 @@
 %h2 Hello Wrold
+
+%table
+  %tr
+    %td ID
+    %td Description
+    %td Manager
+  %tr
+  -@games.each do |g|
+    %td= g.id
+    %td= g.description
+    %td= g.manager

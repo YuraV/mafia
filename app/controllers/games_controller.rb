@@ -2,6 +2,8 @@ class GamesController < ApplicationController
 
   before_filter :game_find, except: [:create, :new, :index]
 
+  respond_to :html
+
   def index
     @games = Game.all
   end
@@ -11,11 +13,16 @@ class GamesController < ApplicationController
   end
 
   def new
-
+    @game = Game.new
   end
 
   def create
-
+    @game = Game.new(params[:game])
+    if @game.save
+      respond_with @game
+    else
+      render 'new'
+    end
   end
 
   def edit

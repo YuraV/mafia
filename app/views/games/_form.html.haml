@@ -1,0 +1,11 @@
+= form_for @game do |g|
+  %div
+    = g.label :description
+    %br/
+    = g.text_field :description
+
+  %div
+    = g.label :manager
+    = g.text_field :manager
+  %div
+    = g.submit
