@@ -3,6 +3,5 @@ class Appointment < ActiveRecord::Base
   belongs_to :user
 
   attr_accessible :user_id, :game_id, :id
-  #attr_accessor :game_id
 
 end
