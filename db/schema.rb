@@ -11,23 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130822085256) do
+ActiveRecord::Schema.define(:version => 20130822130948) do
+
+  create_table "appointments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "games", :force => true do |t|
-    t.integer  "user_id"
     t.string   "description"
     t.string   "result"
     t.string   "best_player"
     t.string   "game_status"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "manager"
+  end
+
+  create_table "managers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "user_name"
+    t.string   "name"
     t.string   "alias"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

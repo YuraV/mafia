@@ -5,7 +5,6 @@
     = g.text_field :description
 
   %div
-    = g.label :manager
-    = g.text_field :manager
+    = g.select :game_manager, options_for_select(@users.map {|user| [user.name, user.id]})
   %div
     = g.submit
