@@ -13,16 +13,14 @@ class GamesController < ApplicationController
   end
 
   def new
+    @users = User.scoped
     @game = Game.new
   end
 
   def create
     @game = Game.new(params[:game])
-    if @game.save
-      respond_with @game
-    else
-      render 'new'
-    end
+    @game.save
+    respond_with @game
   end
 
   def edit

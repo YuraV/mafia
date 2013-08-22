@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
 
   has_many :appointments
   has_many :games, :through => :appointments
+  has_many :managers
 end
