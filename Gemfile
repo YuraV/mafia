@@ -25,6 +25,8 @@ gem 'devise'
 gem 'haml-rails'
 gem 'html2haml'
 gem 'rspec', '~> 2.14.1'
+gem 'simple_form'
+gem 'pry'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
