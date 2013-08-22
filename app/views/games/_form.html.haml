@@ -6,5 +6,11 @@
 
   %div
     = g.select :game_manager, options_for_select(@users.map {|user| [user.name, user.id]})
+
+  - @users.each do
+    %div
+      Add Players:
+      = g.select :gamer, options_for_select(@users.map {|user| [user.alias, user.id]})
+
   %div
     = g.submit

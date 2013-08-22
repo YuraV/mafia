@@ -5,8 +5,17 @@
     %td ID
     %td Description
     %td Manager
+    %td Appointment ID
+    %td Show
+    %td Update
+    %td Destroy
   - @games.each do |g|
     %tr
       %td= g.id
       %td= g.description
       %td= g.manager.user.name
+      - g.appointments.each do |a|
+        %td= a.id
+      %td= link_to 'Show', game_path(g)
+      %td= link_to 'Edit', edit_game_path(g)
+      %td= link_to 'Destroy', game_path(g), method: :delete

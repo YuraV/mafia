@@ -10,3 +10,17 @@
       Game Manager:
       %strong
         = @game.manager.user.name
+
+  %div
+    %span
+      Game ID:
+      %strong
+        = @game.id
+
+
+  -#%div
+  -#  %span
+  -#    Game Number:
+  -#    %strong
+  -#      - @game.appointments.each do |a|
+  -#        = a.game.id
