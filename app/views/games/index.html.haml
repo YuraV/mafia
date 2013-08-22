@@ -6,7 +6,7 @@
     %td Description
     %td Manager
   %tr
-  -@games.each do |g|
+  - @games.each do |g|
     %td= g.id
     %td= g.description
     %td= g.manager.user.user_name

@@ -13,7 +13,7 @@ class Game < ActiveRecord::Base
 
   def create_manager
     if game_manager
-      Manager.create(user_id: self.s game_manager, game_id: self.id)
+      Manager.create(user_id: self.game_manager, game_id: self.id)
 
     end
   end
