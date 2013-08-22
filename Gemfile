@@ -21,6 +21,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'devise'
+gem 'haml-rails'
+gem 'html2haml'
+gem 'rspec', '~> 2.14.1'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
