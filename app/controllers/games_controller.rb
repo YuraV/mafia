@@ -18,6 +18,7 @@ class GamesController < ApplicationController
   end
 
   def create
+    
     @game = Game.new(params[:game])
     @game.save
     respond_with @game
