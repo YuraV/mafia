@@ -9,7 +9,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(params[:appointment])
     @appointment.game_id = params[:game_id]
     @appointment.save
-    #respond_with @game, @appointment
+    respond_with @game, @appointment
   end
 
   def show
