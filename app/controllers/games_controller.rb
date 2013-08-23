@@ -15,10 +15,10 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    render "games/new", layout: false
   end
 
   def create
-    
     @game = Game.new(params[:game])
     @game.save
     respond_with @game

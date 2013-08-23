@@ -28,6 +28,7 @@ gem 'rspec', '~> 2.14.1'
 gem 'simple_form'
 gem 'pry'
 gem 'bootstrap-sass', '~> 2.3.2.1'
+gem 'facebox-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

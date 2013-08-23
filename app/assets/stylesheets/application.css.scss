@@ -10,5 +10,18 @@
  *
  *= require_self
  *= require_tree .
+ *= require jquery.facebox
  */
 @import "bootstrap";
+.content {
+  background-color: #eee;
+  padding: 20px;
+  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+  table thead th {
+    vertical-align: middle;
+    background-color: #f0f0f0;
+  }
+}
+#main {
+  padding-top:45px;
+}

@@ -7,15 +7,16 @@
   %div
     = g.select :game_manager, options_for_select(@users.map {|user| [user.name, user.id]})
 
-  - @users.each do |u|
+
+  
     %div
       Add Players:
-      = u
-
+      - @users.each do |u|    
+        = g.select :gamer, options_for_select(@users.map {|user| [user.name, user.id]})
+          
   %div
     = g.submit
 
 .span6
   fdsfsfs
   .well
-    well text

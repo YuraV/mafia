@@ -12,6 +12,7 @@ class Game < ActiveRecord::Base
 
   after_create :create_manager
   after_create :create_appointment
+  after_create :game_status
 
   def create_manager
     if game_manager
@@ -20,7 +21,11 @@ class Game < ActiveRecord::Base
     end
   end
 
-  def create_appointment
+  def game_status
+    Game.create(game_status: 'open')
+  end
+
+  def create_appointment 
     Appointment.create(game_id: self.id, user_id: self.gamer)
   end
 
