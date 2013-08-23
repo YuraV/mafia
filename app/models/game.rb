@@ -11,8 +11,7 @@ class Game < ActiveRecord::Base
 
 
   after_create :create_manager
-  after_create :create_appointment
-  after_create :game_status
+  #after_create :create_appointment
 
   def create_manager
     if game_manager
@@ -25,8 +24,8 @@ class Game < ActiveRecord::Base
   #  Game.create(game_status: 'open')
   #end
 
-  def create_appointment
-    Appointment.create(game_id: self.id, user_id: self.gamer)
-  end
+  #def create_appointment
+  #  Appointment.create(game_id: self.id, user_id: self.gamer)
+  #end
 
 end

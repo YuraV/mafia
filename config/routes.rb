@@ -1,7 +1,11 @@
 Mafia::Application.routes.draw do
   devise_for :users
 
-  resources :games
+  resources :games do
+    resources :appointments
+  end
+
+
 
   root :to => 'games#index'
 
