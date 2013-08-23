@@ -21,11 +21,11 @@ class Game < ActiveRecord::Base
     end
   end
 
-  def game_status
-    Game.create(game_status: 'open')
-  end
+  #def game_status
+  #  Game.create(game_status: 'open')
+  #end
 
-  def create_appointment 
+  def create_appointment
     Appointment.create(game_id: self.id, user_id: self.gamer)
   end
 
