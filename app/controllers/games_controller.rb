@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   end
 
   def show
-
+    @appointments = Appointment.scoped
   end
 
   def new

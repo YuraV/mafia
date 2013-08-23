@@ -6,7 +6,6 @@
       %th{:style => 'width: 10%'} ID
       %th{:style => 'width: 10%'} Description
       %th{:style => 'width: 20%'} Manager
-      %th{:style => 'width: 10%'} Appointment ID
       %th{:style => 'width: 10%'} Show
       %th{:style => 'width: 10%'} Update
       %th{:style => 'width: 10%'} Destroy
@@ -15,8 +14,6 @@
         %td= g.id
         %td= g.description
         %td= g.manager.user.name
-        - g.appointments.each do |a|
-          %td= a.id
         %td= link_to 'Show', game_path(g), class:'btn'
         %td= link_to 'Edit', edit_game_path(g), class:'btn'
         %td= link_to 'Destroy', game_path(g), method: :delete,class:'btn btn-danger'

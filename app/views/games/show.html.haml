@@ -5,7 +5,7 @@
       %strong
         = @game.description
 
-  %div
+  %div{id: "#{@game.id}", class: 'game'}
     %span
       Game Manager:
       %strong
@@ -17,8 +17,28 @@
       %strong
         = @game.id
 
+  .players
+    Players:
+    %strong
+      - @appointments.each do |u|
+        .offset1
+          = u.user.alias
+          = link_to 'remove', game_appointment_path(u), method: :delete
+
 
 
 = form_for [@game, @game.appointments.build], {:format => :json, remote: true} do |f|
   = f.select :user_id, options_from_collection_for_select(User.all, 'id', 'name')
-  = f.submit
+  = f.submit 'Add Player', :class => 'add_player'
+
+:javascript
+  $('.add_player').bind('Click', function(e) {
+    var game_id= $('#{@game.id}');
+    console.log(game_id);
+    $.ajax({url: 'games/' + game_id, // URL to contact
+            type: 'GET',
+            success: function(data) {
+                       $('.players').empty().append(data);
+                     }
+          });
+  });
