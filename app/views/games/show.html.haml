@@ -16,3 +16,9 @@
       Game ID:
       %strong
         = @game.id
+
+
+
+= form_for [@game, @game.appointments.build], {:format => :json, remote: true} do |f|
+  = f.select :user_id, options_from_collection_for_select(User.all, 'id', 'name')
+  = f.submit
