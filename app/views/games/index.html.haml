@@ -2,7 +2,9 @@
   %li.active
     = link_to 'Games'
 %h4 Games list
-%table.table.table-striped.table-bordered
+
+%table.table.table-striped.table-bordered.bordered.zebra
+
   %thead
     %tr
       %th{:style => 'width: 10%'} ID
@@ -19,18 +21,14 @@
         %td= g.manager.user.name
         - g.appointments.each do |a|
           %td= a.id
-        %td= link_to 'Show', game_path(g), class:'btn' 
+        %td= link_to 'Show', game_path(g), class:'btn'
         %td= link_to 'Edit', edit_game_path(g), class:'btn'
         %td= link_to 'Destroy', game_path(g), method: :delete,class:'btn btn-danger'
 .new
   = link_to "New", new_game_path, rel: 'facebox', class:'btn btn-primary'
 
-  
 
 
 
 
-:javascript
-  $(document).ready(function(){
-  $("a[rel*='facebox']").facebox()
-  })
+
