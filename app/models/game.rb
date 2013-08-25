@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
 
-  attr_accessible :game_status, :result, :description, :game_manager, :gamer
+  attr_accessible :game_status, :result, :description, :game_manager, :gamer,:best_player
   attr_accessor :game_manager
   attr_accessor :gamer
 

@@ -6,7 +6,14 @@ class AppointmentsController < ApplicationController
     @game = Game.find(params[:game_id])
     @appointment = @game.appointments.build(params[:appointment])
     @appointment.save
-    respond_with @game, @appointment
+    puts "++++++++++++++++++++++++++++++++"
+    puts @game.appointments.count
+    if @game.appointments.count == 10
+      redirect_to games_path
+    else
+      respond_with @game, @appointment
+    end 
+    
   end
 
   def show
