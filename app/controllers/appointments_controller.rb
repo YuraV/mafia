@@ -19,4 +19,10 @@ class AppointmentsController < ApplicationController
   def show
 
   end
+
+  def destroy
+    @game = Game.find(params[:game_id])
+    @appointment = Appointment.find(params[:id])
+    @appointment.destroy
+  end
 end
