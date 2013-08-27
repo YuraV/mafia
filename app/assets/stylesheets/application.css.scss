@@ -38,17 +38,6 @@
   -moz-box-shadow: 0 1px 1px #ccc;
   box-shadow: 0 1px 1px #ccc;
 
-  //& a {
-  //  text-decoration: none;
-  //  text-transform: capitalize;
-  //  color: blue;
-  //}
-  //& a:hover {
-  //  text-decoration: none;
-  //  text-transform: capitalize;
-  //  color: #DBC221;
-  //}
-
   & tr:hover {
     background: #fbf8e9;
     -o-transition: all 0.1s ease-in-out;
@@ -163,4 +152,12 @@
   -moz-border-radius: 0 0 6px 0;
   -webkit-border-radius: 0 0 6px 0;
   border-radius: 0 0 6px 0;
+}
+
+.players {
+  float: right;
+}
+
+.game_content {
+  float: left;
 }
