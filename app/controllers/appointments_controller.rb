@@ -22,7 +22,8 @@ class AppointmentsController < ApplicationController
 
   def destroy
     @game = Game.find(params[:game_id])
-    @appointment = Appointment.find(params[:id])
+    @appointment = @game.appointments.find(params[:id])
     @appointment.destroy
+    respond_with @game, @appointment, :location => game_path(@game)
   end
 end
