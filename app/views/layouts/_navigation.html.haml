@@ -5,7 +5,7 @@
 %ul.nav.pull-right
   - if user_signed_in?
     %li{:class=>(params[:controller]=="users"&&params[:action]=="show" ? "active" : "")}
-      = link_to current_user.name, current_user
+      = link_to current_user.name
     %li
       = link_to t("session.logout"), destroy_user_session_path, :method=>'delete'
     %li
