@@ -23,7 +23,7 @@
       - @appointments.each do |u|
         .offset1
           = u.user.alias
-          = link_to 'remove', game_appointment_path(u), method: :delete
+          = link_to 'remove',game_appointment_path(u), method: :delete
 
 
 
@@ -36,9 +36,9 @@
     var game_id= $('#{@game.id}');
     console.log(game_id);
     $.ajax({url: 'games/' + game_id, // URL to contact
-            type: 'GET',
-            success: function(data) {
-                       $('.players').empty().append(data);
-                     }
-          });
+      type: 'GET',
+      success: function(data) {
+        $('.players').empty().append(data);
+        }
+    });
   });
