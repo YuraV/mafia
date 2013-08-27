@@ -16,23 +16,21 @@
       Game ID:
       %strong
         = @game.id
+
   - unless @game.appointments.size >= 10
     = form_for [@game, @game.appointments.build] do |f|
-      - if @used_ids == []
-        = f.select :user_id, options_from_collection_for_select(User.all, 'id', 'name')
-      - else
-        = f.select :user_id, options_from_collection_for_select(User.where("id not in(?) ", @used_ids), 'id', 'name')
-
+      = f.select :user_id, options_from_collection_for_select(User.where("id not in(?) ", @used_ids), 'id', 'name')
       = f.submit 'Add Player', :id => 'add_player'
 
 
 .players
   Players:
   %strong
-    - @appointments.each do |u|
-      .offset1
-        = u.user.name
-        = link_to 'remove',game_appointment_path(@game, u), method: :delete
+    - @game.appointments.each do |player|
+      - unless player.id == nil
+        .offset1
+          = player.user.name
+          = link_to 'remove',game_appointment_path(@game, player), method: :delete
   = link_to 'remove all', destroy_all_game_appointment_path(@game, @appointments), method: :delete if @appointments.size > 2
 
 
