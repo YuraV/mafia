@@ -11,11 +11,8 @@ class GamesController < ApplicationController
 
   def show
     @appointments = Appointment.scoped
+    @used_ids = (@game.appointments.pluck(:user_id)) + [@game.manager.user_id]
 
-    @used_ids = @game.appointments.pluck(:user_id)
-    #@used_ids = ' ' if @used_ids == nil
-    #Rails.logger.info User.where("id  not in (?) ", @used_ids).pluck(:id)
-    #Rails.logger.info @used_ids
   end
 
   def new
@@ -52,4 +49,5 @@ class GamesController < ApplicationController
   def user_scoped
     @users = User.scoped
   end
+
 end

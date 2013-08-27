@@ -2,7 +2,12 @@ Mafia::Application.routes.draw do
   devise_for :users
 
   resources :games do
-    resources :appointments
+    resources :appointments do
+        member do
+          delete 'destroy_all'
+        end
+
+    end
   end
 
 
