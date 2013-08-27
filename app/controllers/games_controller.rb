@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
 
   before_filter :game_find, except: [:create, :new, :index]
-  before_filter :user_scoped, except: [:index, :show]
+  before_filter :user_scoped, except: [:index]
 
   respond_to :html
 
@@ -11,6 +11,10 @@ class GamesController < ApplicationController
 
   def show
     @appointments = Appointment.scoped
+    @used_ids = @game.appointments.pluck(:user_id)
+    #@used_ids = ' ' if @used_ids == nil
+    #Rails.logger.info User.where("id  not in (?) ", @used_ids).pluck(:id)
+    #Rails.logger.info @used_ids
   end
 
   def new

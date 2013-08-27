@@ -1,3 +1,4 @@
+
 %div
   %div
     %span
@@ -5,13 +6,13 @@
       %strong
         = @game.description
 
-  %div{id: "#{@game.id}", class: 'game'}
+  %div
     %span
       Game Manager:
       %strong
         = @game.manager.user.name
 
-  %div
+  %div{id: "#{@game.id}", class: 'game'}
     %span
       Game ID:
       %strong
@@ -20,25 +21,37 @@
   .players
     Players:
     %strong
-      - @appointments.each do |u|
+      - @game.appointments.each do |u|
         .offset1
-          = u.user.alias
-          = link_to 'remove',game_appointment_path(u), method: :delete
+          = u.user.name
+          = link_to 'remove',game_appointment_path(@game, u), method: :delete
 
 
 
 = form_for [@game, @game.appointments.build], {:format => :json, remote: true} do |f|
-  = f.select :user_id, options_from_collection_for_select(User.all, 'id', 'name')
-  = f.submit 'Add Player', :class => 'add_player'
+  - if @used_ids == []
+    = f.select :user_id, options_from_collection_for_select(User.all, 'id', 'name')
+  - else
+    = f.select :user_id, options_from_collection_for_select(User.where("id not in(?) ", @used_ids), 'id', 'name')
+
+  = f.submit 'Add Player', :id => 'add_player'
 
 :javascript
-  $('.add_player').bind('Click', function(e) {
-    var game_id= $('#{@game.id}');
-    console.log(game_id);
-    $.ajax({url: 'games/' + game_id, // URL to contact
-      type: 'GET',
-      success: function(data) {
-        $('.players').empty().append(data);
-        }
+  /*  $('.add_player').bind('Click', function(e) {
+      var game_id= $('#{@game.id}');
+      console.log(game_id);
+      $.ajax({url: 'games/' + game_id, // URL to contact
+        type: 'GET',
+        success: function(data) {
+          $('.players').empty().append(data);
+          }
+      });
+    });
+  */
+  $(function(){
+    $('#add_player').bind('Click', function(){
+      var game_id= $('#{@game.id}');
+      console.log(game_id);
+      //$('.players').load()
     });
   });
