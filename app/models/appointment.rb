@@ -4,4 +4,7 @@ class Appointment < ActiveRecord::Base
 
   attr_accessible :user_id, :game_id, :id
 
+
+  validates :user_id, presence: true
+
 end

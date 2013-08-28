@@ -3,6 +3,7 @@
     = g.label :description
     %br/
     = g.text_field :description
+
   %div
     = g.select :game_manager, options_for_select(@users.map {|user| [user.alias, user.id]})
     -#%div
@@ -12,3 +13,15 @@
 
   %div
     = g.submit
+
+:javascript
+  $('input[type="submit"]').click(function(){
+    var description = $('#game_description').val()
+        pass = true;
+
+    if (!description) {
+      $('#game_description').attr('placeholder', 'cant be blank');
+      pass = false;
+    }
+    return pass;
+  })

@@ -161,3 +161,7 @@
 .game_content {
   float: left;
 }
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: darkred !important;
+}

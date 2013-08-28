@@ -14,6 +14,8 @@ class Game < ActiveRecord::Base
 
   after_create :create_manager
 
+  validates :description, presence: true
+
   def create_manager
     if game_manager
       Manager.create(user_id: self.game_manager, game_id: self.id)
