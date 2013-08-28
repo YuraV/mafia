@@ -4,11 +4,8 @@
   = link_to "Mafia", games_path, :class => 'brand'
 %ul.nav.pull-right
   - if user_signed_in?
-<<<<<<< HEAD
-=======
     %li{:class=>(params[:controller]=="users"&&params[:action]=="show" ? "active" : "")}
       = link_to current_user.name
->>>>>>> 9c3cd1ce9754eaeb48eaf0cdac703c582b1f7855
     %li
       = link_to t("session.logout"), destroy_user_session_path, :method=>'delete'
     %li
