@@ -26,4 +26,18 @@ class AppointmentsController < ApplicationController
     respond_with @game, @appointment, :location => game_path(@game)
   end
 
+  def edit
+    @game = Game.find(params[:game_id])
+    @appointment = @game.appointments.build(params[:appointment])
+    render 'appointments/role', layout: false
+  end
+
+  def update
+    @game = Game.find(params[:game_id])
+    @appointments = @game.appointments.find(params[:id])
+    #@appointment = @game.appointments(params[:appointment])
+    @game.appointments.build.update_attributes(params[:appointment])
+    respond_with @game, @appointment, :location => game_path(@game)
+  end
+
 end

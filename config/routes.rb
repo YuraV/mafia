@@ -6,7 +6,6 @@ Mafia::Application.routes.draw do
         member do
           delete 'destroy_all'
         end
-
     end
   end
 

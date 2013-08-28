@@ -1,0 +1,25 @@
+= form_for [@game, @game.appointments.build] do |f|
+  - @game.appointments.each do |player|
+    = f.fields_for "#{player.id}" do |a_f|
+      - unless player.id == nil
+        .roles_content
+          .player_name
+            = player.user.name
+          .role_name
+            %span.role_section
+              = a_f.radio_button :role, 'Don'
+              -#= radio_button_tag "role[user_id][#{player.user_id}]", "Don"
+              = f.label "role_don", "DON"
+            %span.role_section
+              = a_f.radio_button :role, 'mafia'
+              -#= radio_button_tag "role[user_id][#{player.user_id}]", "mafia"
+              = f.label "role_mafia", "MAFIA"
+            %span.role_section
+              = a_f.radio_button :role, 'sherif'
+              -#= radio_button_tag "role[user_id][#{player.user_id}]", "sherif"
+              = f.label "role_sherif", "SHERIF"
+            %span.role_section
+              = a_f.radio_button :role, 'citezen'
+              -#= radio_button_tag "role[user_id][#{player.user_id}]", "citezen"
+              = f.label "role_citezen", "CITEZEN"
+  = f.submit

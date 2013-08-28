@@ -31,7 +31,8 @@
         .offset1
           = player.user.name
           = link_to 'remove',game_appointment_path(@game, player), method: :delete
-  = link_to 'remove all', destroy_all_game_appointment_path(@game, @appointments), method: :delete if @appointments.size > 2
+  %div= link_to 'remove all', destroy_all_game_appointment_path(@game, @appointments), method: :delete if @appointments.size > 2
+  %div= link_to 'Rolify', edit_game_appointment_path(@game, @appointments), rel: 'facebox'
 
 
 

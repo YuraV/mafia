@@ -162,6 +162,27 @@
   float: left;
 }
 
-input:-moz-placeholder, textarea:-moz-placeholder {
-  color: darkred !important;
+#facebox {
+  #new_appointment {
+    width: 450px;
+
+    .roles_content {
+      display: block;
+      height: 50px;
+    }
+    .player_name {
+      color: brown;
+      width: 170px;
+      float: left;
+    }
+
+    .role_name {
+      color: red;
+      float: left;
+      vertical-align:text-bottom;
+      label {
+        display: inline-block;
+      }
+    }
+  }
 }
