@@ -29,8 +29,6 @@
     - @game.appointments.each do |player|
       - unless player.id == nil
         .offset1
-          = u.user.name
-          = link_to 'remove',game_appointment_path(@game, u), method: :delete
           = player.user.name
           = link_to 'remove',game_appointment_path(@game, player), method: :delete
   = link_to 'remove all', destroy_all_game_appointment_path(@game, @appointments), method: :delete if @appointments.size > 2
