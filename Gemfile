@@ -29,6 +29,7 @@ gem 'simple_form'
 gem 'pry'
 gem 'bootstrap-sass', '~> 2.3.2.1'
 gem 'facebox-rails'
+gem 'enum_column3'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

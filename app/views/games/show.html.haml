@@ -19,6 +19,9 @@
 
   - unless @game.appointments.size >= 10
     = form_for [@game, @game.appointments.build] do |f|
+      -#- @game.appointments.each do |player|
+      -#  - unless player.id == nil
+          -#= player.user.name
       = f.select :user_id, options_from_collection_for_select(User.where("id not in(?) ", @used_ids), 'id', 'name')
       = f.submit 'Add Player', :id => 'add_player'
 
@@ -32,7 +35,7 @@
           = player.user.name
           = link_to 'remove',game_appointment_path(@game, player), method: :delete
   %div= link_to 'remove all', destroy_all_game_appointment_path(@game, @appointments), method: :delete if @appointments.size > 2
-  %div= link_to 'Rolify', edit_game_appointment_path(@game, @appointments), rel: 'facebox'
+  %div= link_to 'Rolify', edit_game_appointment_path(@game, @appointments), rel: ''
 
 
 

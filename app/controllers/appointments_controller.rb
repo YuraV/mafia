@@ -4,6 +4,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @game = Game.find(params[:game_id])
+    Rails.logger.info params
     @appointment = @game.appointments.build(params[:appointment])
     @appointment.save
     respond_with @game, @appointment, :location => game_path(@game)
