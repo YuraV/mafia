@@ -1,3 +1,4 @@
+- can_be_player = User.where("id not in(?) ", @used_ids)
 .game_content
   %div
     %span
@@ -17,13 +18,15 @@
       %strong
         = @game.id
 
-  - unless @game.appointments.size >= 10
-    = form_for [@game, @game.appointments.build] do |f|
-      -#- @game.appointments.each do |player|
-      -#  - unless player.id == nil
-          -#= player.user.name
-      = f.select :user_id, options_from_collection_for_select(User.where("id not in(?) ", @used_ids), 'id', 'name')
-      = f.submit 'Add Player', :id => 'add_player'
+  -#- unless @game.appointments.size >= 10
+  -#  = form_for [@game, @game.appointments.build] do |f|
+  -#    = f.select :user_id, options_from_collection_for_select(User.where("id not in(?) ", @used_ids), 'id', 'name')
+  -#    = f.submit 'Add Player', :id => 'add_player'
+  .items
+    - can_be_player.each do |player|
+      - unless player.id == nil
+        .player.item{id: "#{player.id}"}
+          = player.name
 
 
 .players
@@ -37,23 +40,172 @@
   %div= link_to 'remove all', destroy_all_game_appointment_path(@game, @appointments), method: :delete if @appointments.size > 2
   %div= link_to 'Rolify', edit_game_appointment_path(@game, @appointments), rel: ''
 
+.dropzone-container
+  .div1.dropzone
 
 
 :javascript
-  /*  $('.add_player').bind('Click', function(e) {
-      var game_id= $('#{@game.id}');
-      console.log(game_id);
-      $.ajax({url: 'games/' + game_id, // URL to contact
-        type: 'GET',
-        success: function(data) {
-          $('.players').empty().append(data);
-          }
-      });
-    });
+  $(function(){
+    new Drag_Drop()
+  })
 
-    $('#add_player').click(function(){
-      var game_id= $('#{@game.id}');
-      console.log(game_id);
-      //$('.players').load()
-    });
-  */
+
+  //$(function() {
+  //jQuery.event.props.push('pageX');
+  //jQuery.event.props.push('pageY');
+  //
+  //
+  //// Елементи для drag
+  //$('.item')
+  //
+  //    // По кліку встановлюємо / знімаємо виделення і переключаємо властивість draggable.
+  //    .on('click', function(e) {
+  //        e.preventDefault();
+  //        $(this).toggleClass('selected');
+  //        this.draggable = $(this).hasClass('selected');
+  //    })
+  //
+  //    // перед початком пересування елементів
+  //    .on('dragstart', function(e) {
+  //        var html = '',
+  //            // знаходимо усі виділенні елементи
+  //            $selectedItems = $('.items .selected');
+  //
+  //        // збираємо HTML виділених елементів
+  //        $selectedItems.each(function() {
+  //            html += this.outerHTML;
+  //        });
+  //
+  //        // Встановлюємо зібраний HTML в якості даних для пересування
+  //        e.dataTransfer.setData('text/html', html);
+  //
+  //
+  //        // Щоб при пересуванні декількох елементів отримати "правильну картинку" використаємо метод setDragImage обєкту e.dataTransfer
+  //        // setDragImage(image, x, y)
+  //        // image - елемент зображення котрого буде використовуватись при пересуванні
+  //        // x и y — зміщення
+  //
+  //        // Елемент за котрий " тягнемо "
+  //        var $draggedItem = $(e.currentTarget),
+  //            draggedItemOffset = $draggedItem.offset(),
+  //
+  //            // Прямокутник в котрий вписуються виділені елементи
+  //            frame = getFrame($selectedItems),
+  //
+  //            // Координати точки за котру будемо тягнути
+  //            dx = e.pageX - draggedItemOffset.left + (draggedItemOffset.left - frame.lx),
+  //            dy = e.pageY - draggedItemOffset.top + (draggedItemOffset.top - frame.ly),
+  //
+  //            // Елемент котрий будемо передавати як image в setDragImage
+  //            $image = $(document.createElement('div'));
+  //
+  //        // Позиціонуємо $image перед тим як додати його на сторінку
+  //        $image.css({
+  //            position: 'absolute',
+  //            // Сховаємо його підниз щоб не обривав подію dragstart
+  //            zIndex: -1,
+  //            left: frame.lx,
+  //            top: frame.ly,
+  //            width: Math.abs(frame.lx - frame.rx),
+  //            height: Math.abs(frame.ly - frame.ry)
+  //        });
+  //
+  //        // Додаємо клони елементів до  $image
+  //        $selectedItems.each(function(i, item) {
+  //            var $item = $(item),
+  //                $clone = $item.clone(),
+  //                itemOffset = $item.offset();
+  //
+  //            // Позиціонуємо клони в середині $image
+  //            $clone.css({
+  //                position: 'absolute',
+  //                left: itemOffset.left - frame.lx,
+  //                top: itemOffset.top - frame.ly
+  //            });
+  //
+  //            $image.append($clone);
+  //        });
+  //
+  //        // Додаємо $image на сторінку
+  //        $('body').append($image);
+  //
+  //        // Встановлюємо $image в якості картинки для пересування
+  //        e.dataTransfer.setDragImage($image.get(0), dx, dy);
+  //
+  //        // Видаляємо $image через 1 мілісекунду. Якщо видалити одразу
+  //        // то виклик setDragImage відбудеться до того як відрендериться $image
+  //        window.setTimeout(function() {
+  //            $image.remove();
+  //        }, 1);
+  //
+  //        return true;
+  //    })
+  //
+  //    .on('dragend', function(e) {
+  //        resetUI();
+  //    });
+  //
+  //// Повертаємо прямокутник в котрий вписується  $items
+  //function getFrame($items) {
+  //    var offset = $items.first().offset(),
+  //        frame = { lx: offset.left, ly: offset.top, rx: offset.left, ry: offset.top };
+  //
+  //    $items.each(function() {
+  //        var $this = $(this),
+  //        offset = $this.offset(),
+  //        width = $this.width(),
+  //        height = $this.height();
+  //
+  //        if (offset.left < frame.lx) frame.lx = offset.left;
+  //        if (offset.top < frame.ly) frame.ly = offset.top;
+  //        if (offset.left + width > frame.rx) frame.rx = offset.left + width;
+  //        if (offset.top + height > frame.ry) frame.ry = offset.top + height;
+  //
+  //    });
+  //    return frame;
+  //}
+  //
+  //
+  ///* Дропзона */
+  //
+  //$('.dropzone')
+  //    // При наведені додаємо клас dragover
+  //        .on('dragenter', function(e) {
+  //            $(this).addClass('dragover');
+  //        })
+  //    // Забираємо клас dragover
+  //        .on('dragleave', function(e) {
+  //            $(this).removeClass('dragover');
+  //        })
+  //        .on('dragover', function(e) {
+  //            // Щоб до елементу дойшла подія drop, потрібно заборонити передачу по цепочці події dragover
+  //            if (e.preventDefault) e.preventDefault();
+  //            return false;
+  //        })
+  //
+  //    // Обробляємо Дроп
+  //        .on('drop', function(e) {
+  //            // Доастем HTML из события
+  //            var html = e.dataTransfer.getData('text/html');
+  //
+  //            // Додаемо ХТМЛ до дропзони
+  //            $(this).append(html);
+  //
+  //            resetUI();
+  //            return true;
+  //        });
+  //
+  //function resetUI() {
+  //    $('.selected').removeClass('selected').attr('draggable', false);
+  //    $('.dragover').removeClass('dragover');
+  //}
+  //
+  //var loop = window.setInterval(function(){
+  //    if ($('.dropzone .item').size() >= 28) {
+  //        $('.dropzone-container').addClass('completed');
+  //        window.clearInterval(loop);
+  //    }
+  //}, 1000);
+  //
+  //});
+  //

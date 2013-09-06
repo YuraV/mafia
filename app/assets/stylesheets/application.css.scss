@@ -186,3 +186,23 @@
     }
   }
 }
+
+
+.div1 {
+  border: 1px solid black;
+  width: 150px;
+  height: 200px;
+  //float: right;
+  margin-left: 425px;
+  position: relative;
+}
+
+.player{
+  width: 80px;
+  background: red;
+  margin: 5px 0 5px 0;
+}
+
+.selected {
+  background: blue;
+}
