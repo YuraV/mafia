@@ -86,14 +86,12 @@ class window.Drag_Drop
       e.preventDefault()  if e.preventDefault
       false
     ).on "drop", (e) ->
-#      data = ''
       html = e.dataTransfer.getData("text/html")
       $(this).append html
       resetUIDropZone()
       $s = $(".selected").filter(->
         $ "div", this
       )
-#      sendData()
       userData = $s.map(->
         {
           user_id: $(this).data('id')

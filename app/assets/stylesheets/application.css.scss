@@ -190,11 +190,12 @@
 
 .div1 {
   border: 1px solid black;
-  width: 150px;
-  //height: 200px;
-  //float: right;
+  width: 300px;
+  margin-top: 60px;
   margin-left: 425px;
   position: relative;
+  min-height: 150px;
+
 }
 
 .player{
@@ -212,3 +213,16 @@
 
 }
 
+.item {
+  margin: 5px;
+  //padding: 5px 20px 5px 20px;
+  width: 110px;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.remove_all {
+  margin: 10px 0 10px 100px;
+}

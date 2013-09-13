@@ -21,19 +21,22 @@
     .items
       - can_be_player.each do |player|
         - unless player.id == nil
-          .btn.item{:data => {:id => "#{player.id}"}}
+          .btn.btn-inverse.item{:data => {:id => "#{player.id}"}}
             = player.name
   -#%div= link_to 'Rolify', edit_game_appointment_path(@game, @appointments), rel: ''
 .dropzone-container
   .div1.dropzone
-
-    Players:
+    .progress
+      Players:
     %strong
       - @game.appointments.each do |player|
         - unless player.id == nil
-          .btn
+          .btn.btn-danger.item
+            -#= player.user.name
             = link_to player.user.name,game_appointment_path(@game, player), method: :delete
-      = link_to 'Remove All', destroy_all_game_appointment_path(@game, @appointments), method: :delete if @game.appointments.present?
+      - if @game.appointments.present?
+        .remove_all.btn
+          = link_to 'Remove All', destroy_all_game_appointment_path(@game, @appointments), method: :delete
 
 :javascript
   $(function(){
