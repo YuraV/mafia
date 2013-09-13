@@ -191,7 +191,7 @@
 .div1 {
   border: 1px solid black;
   width: 150px;
-  height: 200px;
+  //height: 200px;
   //float: right;
   margin-left: 425px;
   position: relative;
@@ -204,5 +204,11 @@
 }
 
 .selected {
-  background: blue;
+  background: darkgrey;
 }
+
+.dragable {
+  width: 350px;
+
+}
+

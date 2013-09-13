@@ -7,49 +7,6 @@ class window.Drag_Drop
     resetUIDropZone = ->
       $(".dropzone .selected").removeClass("selected").attr "draggable", false
       $(".dragover").removeClass "dragover"
-
-
-#    jQuery.event.props.push "dataTransfer"
-#    jQuery.event.props.push "pageX"
-#    jQuery.event.props.push "pageY"
-#
-#    $(".item").on("click", (e) ->
-#      e.preventDefault()
-#      $(this).toggleClass "selected"
-#      @draggable = $(this).hasClass("selected")
-#    ).on("dragstart", (e) ->
-#      html = ""
-#      $selectedItems = $(".items .selected")
-#      $selectedItems.each ->
-#        html += @outerHTML
-#
-#      e.dataTransfer.setData "text/html", html
-#      true
-#    ).on "dragend", (e) ->
-#
-#    $(".dropzone").on("dragenter", (e) ->
-#      $(this).addClass "dragover"
-#    ).on("dragleave", (e) ->
-#      $(this).removeClass "dragover"
-#    ).on("dragover", (e) ->
-#      e.preventDefault()  if e.preventDefault
-#      false
-#    ).on "drop", (e) ->
-#      html = e.dataTransfer.getData("text/html")
-#      $(this).append html
-#      resetUIDropZone()
-#      $s = $(".selected").filter(->
-#        $ "div", this
-#      )
-#      console.log $s
-#      $s.remove()
-#      true
-#
-#    loop_ = window.setInterval(->
-#      if $(".dropzone .item").size() >= 28
-#        $(".dropzone-container").addClass "completed"
-#        window.clearInterval loop_
-#    , 1000)
     getFrame = ($items) ->
       offset = $items.first().offset()
       frame =
@@ -129,15 +86,27 @@ class window.Drag_Drop
       e.preventDefault()  if e.preventDefault
       false
     ).on "drop", (e) ->
+#      data = ''
       html = e.dataTransfer.getData("text/html")
       $(this).append html
       resetUIDropZone()
       $s = $(".selected").filter(->
         $ "div", this
       )
-      console.log $s
+#      sendData()
+      userData = $s.map(->
+        {
+          user_id: $(this).data('id')
+        }
+      ).get()
+      game_id = $('.game').data('id')
       $s.remove()
-      true
+      $.ajax '/games/'+game_id+'/appointments/create_bunch',
+        type: 'post'
+        data:
+          appointment_data: userData,
+        success: location.reload()
+
 
     loop_ = window.setInterval(->
       if $(".dropzone .item").size() >= 28
