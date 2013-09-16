@@ -18,14 +18,12 @@
       %strong
         = @game.id
 
-
   .dragable
     .items
       - can_be_player.each do |player|
         - unless player.id == nil
           .btn.btn-inverse.item{:data => {:id => "#{player.id}"}}
             = player.name
-  %div= link_to 'Rolify', set_role_game_appointment_path(@game, @appointments), rel: 'facebox'
 
 .dropzone-container
   .div1.dropzone.add
@@ -33,22 +31,12 @@
       Players:
     %strong
       - @game.appointments.each do |player|
-        - unless player.id == nil
+        - unless player.id.nil?
           .item
-            -#= player.user.name
-            = link_to player.user.name,game_appointment_path(@game, player), method: :delete, class: 'btn btn-danger'
+            = link_to "#{player.user.name} : #{player.role}" ,game_appointment_path(@game, player), method: :delete, class: 'btn btn-danger'
+
       - if @game.appointments.present?
         .remove_all.btn
           = link_to 'Remove All', destroy_all_game_appointment_path(@game, @appointments), method: :delete
-
-
--#:javascript
--#  $(function() {
--#    $('.dropzone-container').accordion({
--#      collapsible: true,
--#      active: false,
--#      fillSpace: false,
--#      autoHeight: false,
--#      header: '> div > h3'
--#    });
--#  });
+        .remove_all.btn
+          = link_to 'Rolify', set_role_game_appointment_path(@game, @appointments), rel: 'facebox'

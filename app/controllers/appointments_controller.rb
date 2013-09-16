@@ -13,8 +13,6 @@ class AppointmentsController < ApplicationController
   def create_bunch
     @game = Game.find(params[:game_id])
     @game.update_attributes(appointments_attributes: params.fetch(:appointment_data, []))
-
-
     render nothing: true
   end
 

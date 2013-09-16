@@ -163,26 +163,25 @@
 }
 
 #facebox {
-  #new_appointment {
-    width: 450px;
+  .popup{
+    width: 370px;
+  }
+  .roles_content {
+    display: block;
+    height: 50px;
+  }
+  .player_name {
+    color: brown;
+    width: 170px;
+    float: left;
+  }
 
-    .roles_content {
-      display: block;
-      height: 50px;
-    }
-    .player_name {
-      color: brown;
-      width: 170px;
-      float: left;
-    }
-
-    .role_name {
-      color: red;
-      float: left;
-      vertical-align:text-bottom;
-      label {
-        display: inline-block;
-      }
+  .role_name {
+    color: red;
+    float: left;
+    vertical-align:text-bottom;
+    label {
+      display: inline-block;
     }
   }
 }
@@ -232,6 +231,7 @@
 }
 
 .remove_all {
-  margin: 10px 0 10px 100px;
+  margin: 10px 0 10px 90px;
+  width: 103px;
 }
 
