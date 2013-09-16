@@ -196,6 +196,15 @@
   position: relative;
   min-height: 150px;
 
+  .item {
+    width: 135px;
+    display: inline-block;
+    margin: 5px;
+
+    a {
+      width: 110px;
+    }
+  }
 }
 
 .player{
@@ -215,10 +224,9 @@
 
 .item {
   margin: 5px;
-  //padding: 5px 20px 5px 20px;
   width: 110px;
   a {
-    text-decoration: none;
+    //text-decoration: none;
     color: white;
   }
 }
@@ -226,3 +234,4 @@
 .remove_all {
   margin: 10px 0 10px 100px;
 }
+

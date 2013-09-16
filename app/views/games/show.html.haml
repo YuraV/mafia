@@ -31,9 +31,9 @@
     %strong
       - @game.appointments.each do |player|
         - unless player.id == nil
-          .btn.btn-danger.item
+          .item
             -#= player.user.name
-            = link_to player.user.name,game_appointment_path(@game, player), method: :delete
+            = link_to player.user.name,game_appointment_path(@game, player), method: :delete, class: 'btn btn-danger'
       - if @game.appointments.present?
         .remove_all.btn
           = link_to 'Remove All', destroy_all_game_appointment_path(@game, @appointments), method: :delete
