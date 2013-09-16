@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
 
 
-  attr_accessible :game_status, :result, :description, :game_manager
+  attr_accessible :game_status, :result, :description, :game_manager, :appointments_attributes
 
   attr_accessor :game_manager
   attr_accessor :gamer
@@ -10,6 +10,8 @@ class Game < ActiveRecord::Base
   has_many :users, :through => :appointments
 
   has_one :manager, dependent: :destroy
+
+  accepts_nested_attributes_for :appointments
 
 
   after_create :create_manager

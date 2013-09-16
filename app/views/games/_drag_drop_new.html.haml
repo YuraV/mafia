@@ -1,0 +1,44 @@
+- can_be_player = User.where("id not in(?) ", @used_ids)
+.game_content
+  %div
+    %span
+      Game Description:
+      %strong
+        = @game.description
+
+  %div
+    %span
+      Game Manager:
+      %strong
+        = @game.manager.user.name
+
+  %div{data: {id: "#{@game.id}"}, class: 'game'}
+    %span
+      Game ID:
+      %strong
+        = @game.id
+
+  .dropzone-container
+    .dragable.dropzone.remove
+      .items
+        - can_be_player.each do |player|
+          - unless player.id == nil
+            .btn.btn-inverse.item{:data => {:id => "#{player.id}"}}
+              = player.name
+    -#%div= link_to 'Rolify', edit_game_appointment_path(@game, @appointments), rel: ''
+
+
+.dropzone-container
+  .div1.dropzone.add.dragable
+    .progress
+      Players:
+    %strong
+      - @game.appointments.each do |player|
+        - unless player.id == nil
+          .item
+            = player.user.name
+            -#= link_to player.user.name,game_appointment_path(@game, player), method: :delete, class: 'btn btn-danger'
+      - if @game.appointments.present?
+        .remove_all.btn
+          = link_to 'Remove All', destroy_all_game_appointment_path(@game, @appointments), method: :delete
+

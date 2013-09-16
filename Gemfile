@@ -21,6 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 4.0.4'
 gem 'devise'
 gem 'haml-rails'
 gem 'html2haml'

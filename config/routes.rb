@@ -3,9 +3,13 @@ Mafia::Application.routes.draw do
 
   resources :games do
     resources :appointments do
-      post :create_bunch, on: :collection
-      member do
+      collection do
+        post :create_bunch
+        put :put_roles
+      end
 
+      member do
+        get :set_role
         delete 'destroy_all'
       end
     end

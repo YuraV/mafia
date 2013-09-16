@@ -1,24 +1,54 @@
--#= form_for [@game, @game.appointments.build] do |f|
--#  - @game.appointments.each do |player|
--#    = f.fields_for "#{player.user_id}" do |a_f|
--#      - unless player.id == nil
--#        .roles_content
--#          .player_name
--#            = player.user.name
--#          .role_name
--#            %span.role_section
--#              = a_f.radio_button :role, 'Don'
--#              = f.label "role_don", "DON"
--#            %span.role_section
--#              = a_f.radio_button :role, 'mafia'
--#              = f.label "role_mafia", "MAFIA"
--#            %span.role_section
--#              = a_f.radio_button :role, 'sherif'
--#              = f.label "role_sherif", "SHERIF"
--#            %span.role_section
--#              = a_f.radio_button :role, 'citizen'
--#              = f.label "role_citizen", "CITIZEN"
--#  = f.submit
+= form_for @game, :url => put_roles_game_appointments_path(@game) do |f|
+  = f.fields_for :appointments do |a_f|
+    - unless a_f.object_id.nil?
+      .roles_content
+        .player_name
+          = a_f.object.user.name
+        .role_name
+          %span.role_section
+            = a_f.radio_button :role, 'Don'
+            = f.label "role_don", "DON"
+          %span.role_section
+            = a_f.radio_button :role, 'mafia'
+            = f.label "role_mafia", "MAFIA"
+          %span.role_section
+            = a_f.radio_button :role, 'sherif'
+            = f.label "role_sherif", "SHERIF"
+          %span.role_section
+            = a_f.radio_button :role, 'citizen'
+            = f.label "role_citizen", "CITIZEN"
+  = f.submit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -#
 -#
 -#
