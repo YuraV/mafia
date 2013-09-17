@@ -17,5 +17,5 @@
           %span.role_section
             = a_f.radio_button :role, 'citizen', {id: "game_appointments_attributes_#{a_f.object.id}_role_citizen"}
             = f.label "appointments_attributes_#{a_f.object.id}_role_citizen", "CITIZEN"
-  = f.submit
+  = f.submit 'Set Roles', class: 'btn'
 

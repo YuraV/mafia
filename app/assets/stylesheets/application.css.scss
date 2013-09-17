@@ -171,9 +171,29 @@
     height: 50px;
   }
   .player_name {
-    color: brown;
-    width: 170px;
+    background: -moz-linear-gradient(center bottom , #444444, #999999) repeat scroll 0 0 transparent;
+    //text-shadow: -2px 2px 3px #ff2d95;
+    //text-shadow: 0px 1px 1px #4d4d4d;
+    //color: #222;
+    //font: 15px 'LeagueGothicRegular';
+    margin: 5px 0 5px -2px;
+    //border-radius: 7px 7px 7px 7px;
+    padding: 2px 0 2px 30px;
+    width: 76%;
     float: left;
+
+    /********************************* text style *************/
+    //color: #fff;
+    //text-shadow: 0px -1px 4px white, 0px -2px 10px yellow, 0px -10px 20px #ff8000, 0px -18px 40px red;
+    //font: 25px 'BlackJackRegular';
+    /**********************************************************/
+    color: #d7ceb2;
+    text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72;
+    font: 25px 'BazarMedium';
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+
   }
 
   .role_name {
@@ -183,6 +203,10 @@
     label {
       display: inline-block;
     }
+  }
+  .btn {
+    margin: 25px 0 0 80px;
+    width: 150px;
   }
 }
 
