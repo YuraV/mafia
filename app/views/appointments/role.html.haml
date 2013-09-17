@@ -6,15 +6,17 @@
           = a_f.object.user.name
         .role_name
           %span.role_section
-            = a_f.radio_button :role, 'Don'
-            = f.label "role_don", "DON"
+            = a_f.radio_button :role, 'Don', {id: "game_appointments_attributes_#{a_f.object_id}_role_don"}
+            = f.label "appointments_attributes_#{a_f.object_id}_role_don", "DON"
           %span.role_section
-            = a_f.radio_button :role, 'mafia'
-            = f.label "role_mafia", "MAFIA"
+            = a_f.radio_button :role, 'mafia', {id: "game_appointments_attributes_#{a_f.object_id}_role_mafia"}
+            = f.label "appointments_attributes_#{a_f.object_id}_role_mafia", "MAFIA"
           %span.role_section
-            = a_f.radio_button :role, 'sherif'
-            = f.label "role_sherif", "SHERIF"
+            = a_f.radio_button :role, 'sherif', {id: "game_appointments_attributes_#{a_f.object_id}_role_sherif"}
+            = f.label "appointments_attributes_#{a_f.object_id}_role_sherif", "SHERIF"
           %span.role_section
-            = a_f.radio_button :role, 'citizen'
-            = f.label "role_citizen", "CITIZEN"
+            = a_f.radio_button :role, 'citizen', {id: "game_appointments_attributes_#{a_f.object_id}_role_citizen"}
+            = f.label "appointments_attributes_#{a_f.object_id}_role_citizen", "CITIZEN"
   = f.submit
+
+:javascript
