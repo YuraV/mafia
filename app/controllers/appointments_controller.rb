@@ -43,6 +43,9 @@ class AppointmentsController < ApplicationController
   def put_roles
     @game = Game.find(params[:game_id])
     @game.update_attributes(params.fetch(:game, {}))
+    @game.appointments.each do |appointment|
+      appointment.set_team!
+    end
     respond_with @game, @appointment, location: game_path(@game)
   end
 
