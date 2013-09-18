@@ -1,29 +1,10 @@
 - can_be_player = User.where("id not in(?) ", @used_ids)
-.game_content
-  %div
-    %span
-      Game Description:
-      %strong
-        = @game.description
-
-  %div
-    %span
-      Game Manager:
-      %strong
-        = @game.manager.user.name
-
-  %div{data: {id: "#{@game.id}"}, class: 'game'}
-    %span
-      Game ID:
-      %strong
-        = @game.id
-
-  .dragable
-    .items
-      - can_be_player.each do |player|
-        - unless player.id == nil
-          .btn.btn-inverse.item{:data => {:id => "#{player.id}"}}
-            = player.name
+.dragable
+  .items
+    - can_be_player.each do |player|
+      - unless player.id == nil
+        .btn.btn-inverse.item{:data => {:id => "#{player.id}"}}
+          = player.name
 
 .dropzone-container
   .div1.dropzone.add

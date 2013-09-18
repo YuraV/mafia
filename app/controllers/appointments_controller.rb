@@ -46,4 +46,14 @@ class AppointmentsController < ApplicationController
     respond_with @game, @appointment, location: game_path(@game)
   end
 
+  def score
+    @game = Game.find(params[:game_id])
+    @appointment = @game.appointments(params[:appointment])
+    render 'appointments/score'
+  end
+
+  def set_score
+
+  end
+
 end

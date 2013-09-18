@@ -1,0 +1,13 @@
+.form
+  = simple_form_for @game do |f|
+    - if @game.status_open?
+      .best_player
+        = f.select :best_player, options_from_collection_for_select(User.where("id in (?)", @best_player), 'name', 'name')
+    = render 'games/game_status', f: f
+
+    = f.submit
+
+.player_name
+  - if @game.best_player
+    Best Player:
+    = @game.best_player

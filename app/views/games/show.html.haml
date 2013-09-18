@@ -1,6 +1,30 @@
-= render 'games/drag_drop'
--#= render 'games/drag_drop_new'
 
+.game_content
+  %div
+    %span
+      Game Description:
+      %strong
+        = @game.description
+
+  %div
+    %span
+      Game Manager:
+      %strong
+        = @game.manager.user.name
+
+  %div{data: {id: "#{@game.id}"}, class: 'game'}
+    %span
+      Game ID:
+      %strong
+        = @game.id
+  %div
+    %span
+      Game Status:
+      %strong
+        = @game.game_status
+        = link_to 'Change Game Status', game_best_player_path(@game), rel: 'facebox'
+
+= render  @game.status_open? ? 'games/drag_drop' :  'games/game_players'
 
 :javascript
   $(function(){

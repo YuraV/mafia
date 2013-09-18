@@ -10,7 +10,9 @@
       %th{:style => 'width: 10%'} ID
       %th{:style => 'width: 10%'} Description
       %th{:style => 'width: 10%'} Manager
-      %th{:style => 'width: 30%'} Gamers 
+      %th{:style => 'width: 30%'} Gamers
+      %th{:style => 'width: 30%'} Game Status
+      %th{:style => 'width: 30%'} Best Player
 
       %th{:style => 'width: 10%'} Show
       %th{:style => 'width: 10%'} Update
@@ -23,6 +25,8 @@
         %td
           - g.appointments.each do |a|
             = User.find(a.user_id.to_i).alias
+        %td= g.game_status
+        %td= g.best_player
 
         %td= link_to 'Show', game_path(g), class:'btn'
         %td= link_to 'Edit', edit_game_path(g), class:'btn'

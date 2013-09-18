@@ -1,0 +1,4 @@
+= form_for @game, url: set_score_game_appointments_path(@game) do |f|
+  = f.fields_for :appointments do |a_f|
+    = a_f.radio_button :score, '0'
+    = f.label

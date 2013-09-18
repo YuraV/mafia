@@ -159,8 +159,58 @@
 }
 
 .game_content {
-  float: left;
 }
+
+.game_players {
+  position: relative;
+}
+
+.dropzone-container {
+  display: inline-block;
+  float: right;
+  margin-right: 250px;
+}
+
+.player_name {
+  background: -moz-linear-gradient(center bottom , #444444, #999999) repeat scroll 0 0 transparent;
+  //text-shadow: -2px 2px 3px #ff2d95;
+  //text-shadow: 0px 1px 1px #4d4d4d;
+  //color: #222;
+  //font: 15px 'LeagueGothicRegular';
+  margin: 5px 0 5px -2px;
+  //border-radius: 7px 7px 7px 7px;
+  padding: 2px 0 2px 30px;
+  width: 76%;
+  float: left;
+
+  /********************************* text style *************/
+  //color: #fff;
+  //text-shadow: 0px -1px 4px white, 0px -2px 10px yellow, 0px -10px 20px #ff8000, 0px -18px 40px red;
+  //font: 25px 'BlackJackRegular';
+  /**********************************************************/
+
+
+
+  /************************************************************/
+
+  //color: #d7ceb2;
+  //text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72;
+  //font: 25px 'BazarMedium';
+  //letter-spacing: 10px;
+  //text-transform: uppercase;
+  //font-weight: bold;
+
+  /***************************************************************/
+
+  color: #fff;
+  text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+  font: 25px 'ChunkFiveRegular';
+  font-weight: bold;
+  text-transform: uppercase;
+
+
+}
+
 
 #facebox {
   .popup{
@@ -170,45 +220,7 @@
     display: block;
     height: 50px;
   }
-  .player_name {
-    background: -moz-linear-gradient(center bottom , #444444, #999999) repeat scroll 0 0 transparent;
-    //text-shadow: -2px 2px 3px #ff2d95;
-    //text-shadow: 0px 1px 1px #4d4d4d;
-    //color: #222;
-    //font: 15px 'LeagueGothicRegular';
-    margin: 5px 0 5px -2px;
-    //border-radius: 7px 7px 7px 7px;
-    padding: 2px 0 2px 30px;
-    width: 76%;
-    float: left;
 
-    /********************************* text style *************/
-    //color: #fff;
-    //text-shadow: 0px -1px 4px white, 0px -2px 10px yellow, 0px -10px 20px #ff8000, 0px -18px 40px red;
-    //font: 25px 'BlackJackRegular';
-    /**********************************************************/
-
-
-
-    /************************************************************/
-
-    //color: #d7ceb2;
-    //text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72;
-    //font: 25px 'BazarMedium';
-    //letter-spacing: 10px;
-    //text-transform: uppercase;
-    //font-weight: bold;
-
-    /***************************************************************/
-
-    color: #fff;
-    text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
-    font: 25px 'ChunkFiveRegular';
-    font-weight: bold;
-    text-transform: uppercase;
-
-
-  }
 
   .role_name {
     color: red;
@@ -228,8 +240,6 @@
 .div1 {
   border: 1px solid black;
   width: 300px;
-  margin-top: 60px;
-  margin-left: 425px;
   position: relative;
   min-height: 150px;
 
@@ -256,6 +266,7 @@
 
 .dragable {
   width: 350px;
+  float: left;
 
 }
 

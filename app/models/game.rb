@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
 
 
-  attr_accessible :game_status, :result, :description, :game_manager, :appointments_attributes
+  attr_accessible :game_status, :result, :description, :game_manager, :appointments_attributes, :best_player
 
   attr_accessor :game_manager
   attr_accessor :gamer
@@ -22,6 +22,10 @@ class Game < ActiveRecord::Base
     if game_manager
       Manager.create(user_id: self.game_manager, game_id: self.id)
     end
+  end
+
+  def status_open?
+     self.game_status == 'open'
   end
 
 end

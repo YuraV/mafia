@@ -1,7 +1,8 @@
 class GamesController < ApplicationController
 
-  before_filter :game_find, except: [:create, :new, :index]
+  before_filter :game_find, except: [:create, :new, :index, :best_player]
   before_filter :user_scoped, except: [:index]
+  before_filter :appointment_scoped, only: [:best_player, :show]
 
   respond_to :html
 
@@ -10,7 +11,6 @@ class GamesController < ApplicationController
   end
 
   def show
-    @appointments = Appointment.scoped
     @used_ids = (@game.appointments.pluck(:user_id)) + [@game.manager.user_id]
 
   end
@@ -29,7 +29,14 @@ class GamesController < ApplicationController
 
   end
 
+  def best_player
+    @game = Game.find(params[:game_id])
+    @best_player = @game.appointments.pluck(:user_id)
+    render 'games/best_player', layout: false
+  end
+
   def update
+
     @game.update_attributes(params[:game])
     respond_with @game
   end
@@ -39,7 +46,6 @@ class GamesController < ApplicationController
     redirect_to games_path
   end
 
-
   private
 
   def game_find
@@ -48,6 +54,10 @@ class GamesController < ApplicationController
 
   def user_scoped
     @users = User.scoped
+  end
+
+  def appointment_scoped
+    @appointments = Appointment.scoped
   end
 
 end
