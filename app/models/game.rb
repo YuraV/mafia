@@ -1,7 +1,8 @@
+#require 'services/reference'
 class Game < ActiveRecord::Base
 
 
-  attr_accessible :game_status, :result, :description, :game_manager, :appointments_attributes, :best_player
+  attr_accessible :game_status, :result, :description, :game_manager, :appointments_attributes, :best_player, :game_ref
 
   attr_accessor :game_manager
   attr_accessor :gamer
@@ -13,7 +14,7 @@ class Game < ActiveRecord::Base
 
   accepts_nested_attributes_for :appointments
 
-
+  before_create :generate_game_ref
   after_create :create_manager
 
   validates :description, presence: true
@@ -32,5 +33,10 @@ class Game < ActiveRecord::Base
     self.result
   end
 
+  def generate_game_ref
+    ::ReferenceService.new(self).create_reference!
+  end
+  extend FriendlyId
+  friendly_id :game_ref
 
 end
