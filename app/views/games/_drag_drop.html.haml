@@ -14,7 +14,7 @@
       - @game.appointments.each do |player|
         - unless player.id.nil?
           .item
-            = link_to "#{player.user.name}" ,game_appointment_path(@game, player), method: :delete, class: 'btn btn-danger'
+            = link_to "#{player.user.name}: № #{player.player_number}" ,game_appointment_path(@game, player), method: :delete, class: 'btn btn-danger'
 
       - if @game.appointments.present?
         .remove_all
