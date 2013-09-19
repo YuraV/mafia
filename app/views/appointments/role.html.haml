@@ -4,6 +4,8 @@
       .roles_content
         .player_name
           = a_f.object.user.name
+          %span.role_selection
+          = a_f.text_field :player_number
         .role_name
           %span.role_section
             = a_f.radio_button :role, 'Don', {id: "game_appointments_attributes_#{a_f.object.id}_role_don"}
