@@ -28,4 +28,9 @@ class Game < ActiveRecord::Base
      self.game_status == 'open'
   end
 
+  def game_result
+    self.result
+  end
+
+
 end
