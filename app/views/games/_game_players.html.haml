@@ -1,4 +1,4 @@
 .game_players
   - @game.appointments.each do |player|
     .btn.item{disabled: true}
-      = "name: #{player.user.name} role: #{player.role} number: #{player.score}"
+      = "name: #{player.user.name} role: #{player.role} score: #{player.score} number: #{player.player_number}"

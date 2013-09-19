@@ -30,6 +30,12 @@
           Won:
           %strong
             = @game.result
+    - if @game.best_player.present?
+      %div
+        %span
+          Best Player:
+          %strong
+            = @game.best_player
 
 = render  @game.status_open? ? 'games/drag_drop' :  'games/game_players'
 
