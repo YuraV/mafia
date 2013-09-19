@@ -23,6 +23,13 @@
       %strong
         = @game.game_status
         = link_to 'Finish Game', game_best_player_path(@game), rel: 'facebox'
+  - unless @game.status_open?
+    - if @game.result.present?
+      %div
+        %span
+          Won:
+          %strong
+            = @game.result
 
 = render  @game.status_open? ? 'games/drag_drop' :  'games/game_players'
 

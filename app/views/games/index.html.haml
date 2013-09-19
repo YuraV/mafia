@@ -24,7 +24,7 @@
         %td= g.manager.user.name
         %td
           - g.appointments.each do |a|
-            = User.find(a.user_id.to_i).alias
+            = a.user.alias
         %td= g.game_status
         %td= g.best_player
 
