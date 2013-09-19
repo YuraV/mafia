@@ -161,8 +161,24 @@
 .game_content {
 }
 
+.separator {
+  border-top: 1px black solid;
+  width: 80%;
+}
 .game_players {
   position: relative;
+}
+
+.finish_game {
+  margin: 5px 0 5px 0;
+}
+
+.game_status {
+  margin: 5px 0 5px 0;
+}
+
+.game_radio {
+  margin: 3px 0 3px 0;
 }
 
 .dropzone-container {
