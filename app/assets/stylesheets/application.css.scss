@@ -360,3 +360,12 @@ input[type=radio]:checked + label, input[type=checkbox]:checked + label{
 .hidden {
   display: none;
 }
+
+.red{
+  background: red;
+}
+
+.maf{
+  background: black;
+  color:#FFF;
+}
