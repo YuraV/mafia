@@ -9,15 +9,29 @@
       %th
         Games Played
       %th
+        Games Won
+      %th
+        Games Won Red
+      %th
+        Games Won Black
+      %th
         Score
 
     - User.all.each do |user|
+      - red = Appointment.where(user_id: user.id, team: 'red').count(:conditions => 'won' == true)
+      - black = Appointment.where(user_id: user.id, team: 'black').count(:conditions => 'won' == true)
       %tr
         %td
           = user.id
         %td
           = user.name
         %td
-          = @users_games = Appointment.where(user_id: user.id).count()
+          = Appointment.where(user_id: user.id).count()
         %td
-          = @users_score = Appointment.where(user_id: user.id).sum(:score)
+          = red + black
+        %td
+          = red
+        %td
+          = black
+        %td
+          = Appointment.where(user_id: user.id).sum(:score)
