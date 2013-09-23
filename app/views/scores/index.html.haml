@@ -1,0 +1,4 @@
+- User.all.each do |user|
+  = user.name
+  = user.id
+  = @users_count = Appointment.where(user_id: user.id).count()

@@ -11,11 +11,13 @@ Mafia::Application.routes.draw do
       end
 
       member do
-        get :score
+        #get :score
         get :set_role
         delete 'destroy_all'
       end
     end
   end
+  resources :scores
+
   root :to => 'games#index'
 end
