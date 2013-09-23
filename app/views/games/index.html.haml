@@ -19,7 +19,7 @@
       %th{:style => 'width: 10%'} Destroy
     - @games.each do |g|
       %tr
-        %td= g.id
+        %td= g.game_ref
         %td= g.description
         %td= g.manager.user.name
         %td

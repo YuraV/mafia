@@ -38,7 +38,7 @@ class Appointment < ActiveRecord::Base
         self.update_attribute(:score, 5)
       elsif team == 'black'
         self.update_attribute(:score, 4)
-      elsif team == 'red' && self.role =='sherif' && !game.first_killed_sherif 
+      elsif team == 'red' && self.role == 'sherif' && !game.first_killed_sherif
         self.update_attribute(:score, -1)
       elsif team == 'red'
         self.update_attribute(:score, 0)

@@ -1,0 +1,23 @@
+%table.table.table-striped.table-bordered.bordered.zebra
+
+  %thead
+    %tr
+      %th
+        Player ID
+      %th
+        Player Name
+      %th
+        Games Played
+      %th
+        Score
+
+    - User.all.each do |user|
+      %tr
+        %td
+          = user.id
+        %td
+          = user.name
+        %td
+          = @users_games = Appointment.where(user_id: user.id).count()
+        %td
+          = @users_score = Appointment.where(user_id: user.id).sum(:score)
