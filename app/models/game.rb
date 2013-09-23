@@ -2,7 +2,7 @@
 class Game < ActiveRecord::Base
 
 
-  attr_accessible :game_status, :result, :description, :game_manager, :appointments_attributes, :best_player, :game_ref
+  attr_accessible :game_status, :result, :description, :game_manager, :appointments_attributes, :best_player, :game_ref,:first_killed_sherif
 
   attr_accessor :game_manager
   attr_accessor :gamer
