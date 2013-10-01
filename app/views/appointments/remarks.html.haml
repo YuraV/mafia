@@ -17,5 +17,8 @@
           %span.role_section
             = a_f.radio_button :remark, '3', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_3"}
             = f.label "appointments_attributes_#{a_f.object.id}_remarks_3", "3"
+          %span.role_section
+            = a_f.radio_button :remark, '4', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_4"}
+            = f.label "appointments_attributes_#{a_f.object.id}_remarks_4", "4"
   = f.submit 'Set Remarks', class: 'btn'
 
