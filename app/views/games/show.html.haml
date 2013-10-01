@@ -39,6 +39,9 @@
 
 = render  @game.status_open? ? 'games/drag_drop' :  'games/game_players'
 
+- if @game.appointments.size >= 10
+  = render 'games/remarks'
+
 :javascript
   $(function(){
     new Drag_Drop()

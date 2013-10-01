@@ -1,10 +1,12 @@
 - can_be_player = User.where("id not in(?) ", @used_ids)
-.dragable
-  .items
-    - can_be_player.each do |player|
-      - unless player.id == nil
-        .btn.btn-inverse.item{:data => {:id => "#{player.id}"}}
-          = player.name
+
+- if @game.appointments.size < 10
+  .dragable
+    .items
+      - can_be_player.each do |player|
+        - unless player.id == nil
+          .btn.btn-inverse.item{:data => {:id => "#{player.id}"}}
+            = player.name
 
 .dropzone-container
   .div1.dropzone.add

@@ -7,13 +7,15 @@ Mafia::Application.routes.draw do
       collection do
         post :create_bunch
         put :put_roles
-        put :set_score
+        put :put_remarks
+        #put :set_score
       end
 
       member do
         #get :score
         get :set_role
-        delete 'destroy_all'
+        delete :destroy_all
+        get :get_remarks
       end
     end
   end
