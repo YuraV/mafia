@@ -15,7 +15,7 @@ development:
   database: mafia_development
   pool: 5
   username: root
-  password: root
+  password: s123456j
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -28,7 +28,7 @@ test:
   database: mafia_test
   pool: 5
   username: root
-  password: root
+  password: s123456j
   socket: /var/run/mysqld/mysqld.sock
 
 production:

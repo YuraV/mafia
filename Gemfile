@@ -32,6 +32,7 @@ gem 'bootstrap-sass', '~> 2.3.2.1'
 gem 'facebox-rails'
 gem 'enum_column3'
 gem 'friendly_id', '~> 4.0.10.1'
+gem 'actionpack'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
