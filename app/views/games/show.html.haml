@@ -41,6 +41,10 @@
 - if @game.appointments.size >= 10
   = render 'games/remarks'
 
+
+
+= link_to 'Create Round', new_game_round_path(@game)
+
 :javascript
   $(function(){
     new Drag_Drop()

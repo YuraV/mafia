@@ -3,12 +3,14 @@ Mafia::Application.routes.draw do
 
   resources :games do
     get :best_player
+
+    resources :rounds
+
     resources :appointments do
       collection do
         post :create_bunch
         put :put_roles
         put :put_remarks
-        #put :set_score
       end
 
       member do
@@ -17,8 +19,12 @@ Mafia::Application.routes.draw do
         delete :destroy_all
         get :get_remarks
       end
+
     end
+
   end
+
+
   resources :scores
 
   root :to => 'games#index'

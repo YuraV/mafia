@@ -38,5 +38,5 @@ production:
   database: mafia_production
   pool: 5
   username: root
-  password: root
+  password: s123456j
   socket: /var/run/mysqld/mysqld.sock
