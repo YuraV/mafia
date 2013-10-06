@@ -1,0 +1,9 @@
+- if actions.present?
+  %div.actions
+    %a.tasksy.icon.cogtasks
+      %span.taskyar.icon
+    %div.taskymenu
+      %ul
+        - actions.each do |name, route|
+          %li
+            != route

@@ -9,6 +9,7 @@ class Game < ActiveRecord::Base
 
   has_many :appointments, dependent: :destroy
   has_many :users, :through => :appointments
+  has_many :rounds
 
   has_one :manager, dependent: :destroy
 

@@ -23,13 +23,15 @@
         Points
       %th
         Rate
-      
+
 
     - User.all.each do |user|
-      - red = Appointment.where(user_id: user.id, team: 'red').count(:conditions => 'won' == true)
-      - black = Appointment.where(user_id: user.id, team: 'black').count(:conditions => 'won' == true)
+      - red = Appointment.where(user_id: user.id, team: 'red', won: '1').count()
+      - black = Appointment.where(user_id: user.id, team: 'black', won: '1').count()
       - points = Appointment.where(user_id: user.id).sum(:score)
       - games = Appointment.where(user_id: user.id).count()
+      - if games != 0
+        - ratio = "#{points/games.to_f}"
       %tr
         %td
           = user.id
@@ -45,7 +47,5 @@
           = black
         %td
           = points
-        %td 
-
-          -if games != 0 
-            = "#{points/games.to_f}"
+        %td
+          = number_with_precision(ratio, precision: 3, significant: true)

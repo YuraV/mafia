@@ -157,6 +157,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack
   bootstrap-sass (~> 2.3.2.1)
   coffee-rails (~> 3.2.1)
   devise

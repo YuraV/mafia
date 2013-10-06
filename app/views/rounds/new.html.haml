@@ -1,0 +1,41 @@
+= form_for [@game, @round] do |f|
+  = f.fields_for :appointments, @game.appointments.build do |a_f|
+    = f.check_box :user_id
+    = f.label 'user_id', a_f.object
+
+
+
+
+  -#= f.select :user_id, options_from_collection_for_select(User.where("id in(?) ", @players), 'id', 'name')
+  %div
+    = f.submit 'Finish Round', class: 'btn'
+
+
+
+
+
+
+
+-#= form_for @game, :url => put_roles_game_appointments_path(@game) do |f|
+-#  = f.fields_for :appointments do |a_f|
+-#    - unless a_f.object_id.nil?
+-#      .roles_content
+-#        .player_name
+-#          = a_f.object.user.name
+-#          %span.role_selection
+-#          = a_f.text_field :player_number
+-#        .role_name
+-#          %span.role_section
+-#            = a_f.radio_button :role, 'Don', {id: "game_appointments_attributes_#{a_f.object.id}_role_don"}
+-#            = f.label "appointments_attributes_#{a_f.object.id}_role_don", "DON"
+-#          %span.role_section
+-#            = a_f.radio_button :role, 'mafia', {id: "game_appointments_attributes_#{a_f.object.id}_role_mafia"}
+-#            = f.label "appointments_attributes_#{a_f.object.id}_role_mafia", "MAFIA"
+-#          %span.role_section
+-#            = a_f.radio_button :role, 'sherif', {id: "game_appointments_attributes_#{a_f.object.id}_role_sherif"}
+-#            = f.label "appointments_attributes_#{a_f.object.id}_role_sherif", "SHERIF"
+-#          %span.role_section
+-#            = a_f.radio_button :role, 'citizen', {id: "game_appointments_attributes_#{a_f.object.id}_role_citizen"}
+-#            = f.label "appointments_attributes_#{a_f.object.id}_role_citizen", "CITIZEN"
+-#  = f.submit 'Set Roles', class: 'btn'
+-#

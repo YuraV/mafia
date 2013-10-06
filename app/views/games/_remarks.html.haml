@@ -1,0 +1,13 @@
+.div2
+  Remarks:
+  - @game.appointments.each do |player|
+    - if player.remark.present? && player.remark != 0
+
+      .remark_separator
+        .player
+          = player.user.name
+        .remark
+          = player.remark
+  .set_remarks
+    %strong
+      = link_to 'Make A Remark', get_remarks_game_appointment_path(@game), rel: 'facebox', class: 'btn'
