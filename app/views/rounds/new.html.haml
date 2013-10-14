@@ -1,7 +1,7 @@
 = form_for [@game, @round] do |f|
-  = f.fields_for :appointments, @game.appointments.build do |a_f|
-    = f.check_box :user_id
-    = f.label 'user_id', a_f.object
+  = f.fields_for @game.appointments do |a_f|
+    = 1
+
 
 
 
