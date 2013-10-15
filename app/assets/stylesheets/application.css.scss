@@ -419,3 +419,23 @@ input[type=radio]:checked + label, input[type=checkbox]:checked + label{
   background: black;
   color:#FFF;
 }
+
+/********** sorting arrows *******/
+th{
+  &.current {
+    padding-right: 12px;
+    background-repeat: no-repeat;
+    background-position: right center;
+  }
+}
+
+th {
+  &.asc {
+    background-image: url(/images/arrows_grey.png);
+  }
+}
+
+.pretty th .desc {
+  background-image: url(/images/arrows_grey.png);
+  background-position: 15px 25px;
+}

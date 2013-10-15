@@ -3,49 +3,6 @@
     = link_to 'Games',games_path
   %li.active
     = link_to 'Scores', scores_path
-%table.table.table-striped.table-bordered.bordered.zebra
-
-  %thead
-    %tr
-      %th
-        ID
-      %th
-        Name
-      %th
-        Played
-      %th
-        Won
-      %th
-        Won Red
-      %th
-        Won Black
-      %th
-        Score
-      %th
-        Rate
-
-
-    - User.all.each do |user|
-      - red = Appointment.where(user_id: user.id, team: 'red', won: '1').count()
-      - black = Appointment.where(user_id: user.id, team: 'black', won: '1').count()
-      - points = Appointment.where(user_id: user.id).sum(:score)
-      - games = Appointment.where(user_id: user.id).count()
-      - if games != 0
-        - ratio = "#{points/games.to_f}"
-      %tr
-        %td
-          = user.id
-        %td
-          = user.alias
-        %td
-          = games
-        %td
-          = red + black
-        %td.red
-          = red
-        %td.maf
-          = black
-        %td
-          = points
-        %td
-          = number_with_precision(ratio, precision: 3, significant: true)
+= form_tag @user, method: :get do
+  = text_field_tag :search, params[:search]
+#sortable= render 'scores/scores_table'

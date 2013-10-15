@@ -5,36 +5,10 @@
     = link_to 'Scores', scores_path
 %h4 Games list
 
-%table.table.table-striped.table-bordered.bordered.zebra
+= form_tag @game, method: :get do
+  = text_field_tag :search, params[:search]
 
-  %thead
-    %tr
-      %th{:style => 'width: 10%'} ID
-      %th{:style => 'width: 10%'} Description
-      %th{:style => 'width: 10%'} Manager
-      %th{:style => 'width: 30%'} Gamers
-      %th{:style => 'width: 30%'} Game Status
-      %th{:style => 'width: 30%'} Best Player
-
-      %th{:style => 'width: 10%'} Show
-      %th{:style => 'width: 10%'} Update
-      %th{:style => 'width: 10%'} Destroy
-    - @games.each do |g|
-      %tr
-        %td= g.game_ref
-        %td= g.description
-        %td= g.manager.user.name
-        %td
-          - g.appointments.each do |a|
-            = a.user.alias
-        %td= g.game_status
-        %td= g.best_player
-
-        %td= link_to 'Show', game_path(g), class:'btn'
-        %td= link_to 'Edit', edit_game_path(g), class:'btn'
-        %td= link_to 'Destroy', game_path(g), method: :delete,class:'btn btn-danger'
-.new
-  = link_to "New", new_game_path, rel: 'facebox', class:'btn btn-primary'
+#sortable= render 'games_table'
 
 
 

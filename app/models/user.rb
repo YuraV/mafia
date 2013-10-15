@@ -12,4 +12,13 @@ class User < ActiveRecord::Base
   has_many :appointments
   has_many :games, :through => :appointments
   has_many :managers
+
+  def self.search(search)
+    if search
+      where('alias LIKE ? OR name LIKE ?',"%#{search}%", "%#{search}%")
+    else
+      scoped
+    end
+  end
+
 end

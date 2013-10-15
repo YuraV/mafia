@@ -37,7 +37,16 @@ class Game < ActiveRecord::Base
   def generate_game_ref
     ::ReferenceService.new(self).create_reference!
   end
+
   extend FriendlyId
   friendly_id :game_ref
+
+  def self.search(search)
+    if search
+      where('result LIKE ? OR best_player LIKE ? ', "%#{search}%", "%#{search}%")
+    else
+      scoped
+    end
+  end
 
 end

@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
 
+  helper_method :sort_column, :sort_direction
+
   before_filter :game_find, except: [:create, :new, :index, :best_player]
   before_filter :user_scoped, except: [:index]
   before_filter :appointment_scoped, only: [:best_player, :show]
@@ -7,7 +9,12 @@ class GamesController < ApplicationController
   respond_to :html
 
   def index
-    @games = Game.all
+    @games = Game.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10).search(params[:search])
+    respond_with do |format|
+      format.html {
+          render :partial => 'games/games_table' if request.xhr?
+      }
+    end
   end
 
   def show
@@ -63,5 +70,15 @@ class GamesController < ApplicationController
   def appointment_scoped
     @appointments = Appointment.scoped
   end
+
+  def sort_column
+    Game.column_names.include?(params[:sort_column]) ? params[:sort_column] : 'created_at'
+  end
+
+  def sort_direction
+
+    %w[asc desc].include?(params[:sort_direction]) ? params[:sort_direction]: 'asc'
+  end
+
 
 end

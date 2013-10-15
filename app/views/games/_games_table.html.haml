@@ -1,0 +1,31 @@
+%table.table.table-striped.table-bordered.bordered.zebra
+
+  %thead
+    %tr
+      %th{:style => 'width: 10%'} ID
+      %th{:style => 'width: 10%'}=sortable 'description','Description'
+      %th{:style => 'width: 10%'} Manager
+      %th{:style => 'width: 30%'} Players
+      %th{:style => 'width: 30%'}= sortable 'game_status', 'Game Status'
+      %th{:style => 'width: 30%'}= sortable 'best_player', 'Best Player'
+
+      %th{:style => 'width: 10%'} Show
+      %th{:style => 'width: 10%'} Update
+      %th{:style => 'width: 10%'} Destroy
+    - @games.each do |g|
+      %tr
+        %td= g.game_ref
+        %td= g.description
+        %td= g.manager.user.name
+        %td
+          - g.appointments.each do |a|
+            = a.user.alias
+        %td= g.game_status
+        %td= g.best_player
+
+        %td= link_to 'Show', game_path(g), class:'btn'
+        %td= link_to 'Edit', edit_game_path(g), class:'btn'
+        %td= link_to 'Destroy', game_path(g), method: :delete,class:'btn btn-danger'
+.new
+  = link_to "New", new_game_path, rel: 'facebox', class:'btn btn-primary'
+= will_paginate @games

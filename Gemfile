@@ -33,6 +33,7 @@ gem 'facebox-rails'
 gem 'enum_column3'
 gem 'friendly_id', '~> 4.0.10.1'
 gem 'actionpack'
+gem 'will_paginate'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
