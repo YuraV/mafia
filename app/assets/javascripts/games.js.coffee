@@ -1,13 +1,21 @@
 $ ->
-  $('#sortable, .pagination').delegate 'th a, a', 'click', ->
+  $(document).delegate '#sortable_table th a', 'click', ->
     $.ajax($(this).prop('href'),
       dataType: 'html',
       type: 'GET'
     ).success((data) ->
-      $('#sortable').html data
+      $('#sortable_table').html data
     )
     false
 
+  $(document).delegate '#pagination a', 'click', ->
+    $.ajax($(this).prop('href'),
+      dataType: 'html',
+      type: 'GET'
+    ).success((data) ->
+      $('#sortable_table').html data
+    )
+    false
 
   $('#search').on 'submit', ->
     false
@@ -22,6 +30,6 @@ $ ->
       type: 'GET',
       url: formAction + '?utf8=✓&search='+ searchData,
     ).success((data) ->
-      $('#sortable').html data
+      $('#sortable_table').html data
     )
     false

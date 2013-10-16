@@ -28,4 +28,4 @@
         %td= link_to 'Destroy', game_path(g), method: :delete,class:'btn btn-danger'
 .new
   = link_to "New", new_game_path, rel: 'facebox', class:'btn btn-primary'
-= will_paginate @games
+#pagination= will_paginate @games

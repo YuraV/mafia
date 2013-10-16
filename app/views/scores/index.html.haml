@@ -5,4 +5,4 @@
     = link_to 'Scores', scores_path
 = form_tag @user, method: :get, id: 'search' do
   = text_field_tag :search, params[:search]
-#sortable= render 'scores/scores_table'
+#sortable_table= render 'scores/scores_table'
