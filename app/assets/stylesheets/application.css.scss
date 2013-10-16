@@ -15,9 +15,10 @@
 @import "bootstrap";
 
 .top_145_left_160 {
-  position: absolute;
-  top: 145px;
-  left: 160px;
+  position: relative;
+  float: right;
+  top: -230px;
+  left: -450px;
 }
 .content {
   background-color: #eee;
