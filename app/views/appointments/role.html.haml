@@ -17,7 +17,7 @@
             = a_f.radio_button :role, 'sherif', {id: "game_appointments_attributes_#{a_f.object.id}_role_sherif"}
             = f.label "appointments_attributes_#{a_f.object.id}_role_sherif", "SHERIF"
           %span.role_section
-            = a_f.radio_button :role, 'citizen', {id: "game_appointments_attributes_#{a_f.object.id}_role_citizen"}
+            = a_f.radio_button :role, 'citizen', {id: "game_appointments_attributes_#{a_f.object.id}_role_citizen",checked:true}
             = f.label "appointments_attributes_#{a_f.object.id}_role_citizen", "CITIZEN"
   = f.submit 'Set Roles', class: 'btn'
 

@@ -19,7 +19,7 @@ class ReferenceService
   private
 
   def reference(separator = '-')
-    number = rand(1..999)
+    number = rand(000..999)
     ref = ("A".."Z").to_a.shuffle().first(3).join('')
     "#{ref}#{separator}#{number}"
   end
