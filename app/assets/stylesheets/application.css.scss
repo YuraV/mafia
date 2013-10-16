@@ -16,9 +16,8 @@
 
 .top_145_left_160 {
   position: relative;
-  float: right;
-  top: -230px;
-  left: -450px;
+  float: left;
+  margin-left: 15px;
 }
 .content {
   background-color: #eee;
@@ -191,7 +190,7 @@
 .dropzone-container {
   display: inline-block;
   float: right;
-  margin-right: 250px;
+  //margin-right: 250px;
 }
 
 .player_name {
