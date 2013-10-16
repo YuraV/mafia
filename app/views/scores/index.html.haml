@@ -3,6 +3,6 @@
     = link_to 'Games',games_path
   %li.active
     = link_to 'Scores', scores_path
-= form_tag @user, method: :get do
+= form_tag @user, method: :get, id: 'search' do
   = text_field_tag :search, params[:search]
 #sortable= render 'scores/scores_table'
