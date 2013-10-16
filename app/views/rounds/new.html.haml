@@ -1,5 +1,4 @@
 = form_for [@game, @round] do |f|
-<<<<<<< HEAD
   -#= f.fields_for :appointments, @game.appointments.build do |a_f|
     -#= f.check_box :user_id
     -#= f.label 'user_id', a_f.object
@@ -14,7 +13,6 @@
   = f.label 'kill'
   = f.check_box :vote
   = f.label 'vote'
-=======
   = f.fields_for @game.appointments do |a_f|
     = 1
 
@@ -23,7 +21,6 @@
 
 
   -#= f.select :user_id, options_from_collection_for_select(User.where("id in(?) ", @players), 'id', 'name')
->>>>>>> 4d1c122ded7eecfb38e879e464ee43787ee9cd7f
   %div
     = f.submit 'Finish Round', class: 'btn'
 
