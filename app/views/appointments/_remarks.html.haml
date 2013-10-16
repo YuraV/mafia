@@ -1,10 +1,10 @@
-= form_for @game, :url => put_remarks_game_appointments_path(@game) do |f|
-  = f.fields_for :appointments do |a_f|
-    - unless a_f.object_id.nil?
-      .roles_content
-        .player_name
-          = a_f.object.user.name
-        .role_name
+.top_145_left_160.hidden
+  = form_for @game, :url => put_remarks_game_appointments_path(@game) do |f|
+    = f.fields_for :appointments do |a_f|
+      - unless a_f.object_id.nil?
+        %div
+          .player
+            = a_f.object.user.name
           %span.role_section
             = a_f.radio_button :remark, '0', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_0"}
             = f.label "appointments_attributes_#{a_f.object.id}_remarks_0", "0"
@@ -20,5 +20,5 @@
           %span.role_section
             = a_f.radio_button :remark, '4', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_4"}
             = f.label "appointments_attributes_#{a_f.object.id}_remarks_4", "4"
-  = f.submit 'Set Remarks', class: 'btn'
+    = f.submit 'Set Remarks', class: 'btn'
 

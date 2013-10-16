@@ -33,3 +33,22 @@ $ ->
       $('#sortable_table').html data
     )
     false
+
+  $(document).on 'click', 'a.remark_link', (e)->
+    $('.top_145_left_160').toggleClass('hidden')
+    e.preventDefault
+    false
+
+  $('form.edit_game').on 'submit', ->
+    game_id = $('.game').data('id')
+    $.ajax(
+      dataType:   'HTML',
+      type:       'PUT',
+      url:        '/games/' + game_id + '/appointments/put_remarks',
+      data: $(this).serialize()
+
+    ).success((data) ->
+      $('.div2').replaceWith(data)
+
+    )
+    false
