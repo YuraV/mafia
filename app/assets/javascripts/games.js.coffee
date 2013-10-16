@@ -8,7 +8,7 @@ $ ->
     )
     false
 
-  $(document).delegate '#pagination a', 'click', ->
+  $(document).on 'click', '#pagination a',->
     $.ajax($(this).prop('href'),
       dataType: 'html',
       type: 'GET'
