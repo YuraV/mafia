@@ -1,26 +1,29 @@
 module ScoresHelper
 
-  def display_standard_table(columns, collection = {})
+  def red_score(user)
+    Appointment.where(user_id: user.id, team: 'red', won: '1').count()
+  end
 
-    thead = content_tag :thead do
-      content_tag :tr do
-        columns.collect {|column|  concat content_tag(:th,column[:display_name])}.join().html_safe
-      end
+  def black_score(user)
+    Appointment.where(user_id: user.id, team: 'black', won: '1').count()
+  end
+
+  def won(user)
+    black_score(user) + red_score(user)
+  end
+
+  def overall_games(user)
+    Appointment.where(user_id: user.id).count()
+  end
+
+  def points(user)
+    Appointment.where(user_id: user.id).sum(:score)
+  end
+
+  def ratio(user)
+    if overall_games(user) != 0
+      points(user)/overall_games(user).to_f
     end
-
-    tbody = content_tag :tbody do
-      collection.collect { |elem|
-        content_tag :tr do
-          columns.collect { |column|
-            concat content_tag(:td, elem.attributes[column[:name]])
-          }.to_s.html_safe
-        end
-
-      }.join().html_safe
-    end
-
-    content_tag :table, thead.concat(tbody), class: 'table table-striped table-bordered bordered zebra'
-
   end
 
 end
