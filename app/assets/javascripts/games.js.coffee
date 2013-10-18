@@ -56,3 +56,8 @@ $ ->
   $(document).on 'click', 'a.dropdown-toggle', ->
     $(this).parent('div').toggleClass('open')
     return false
+
+
+
+#  $('#sortable_table i').on 'click', ->
+#    $(this).parent('a').click()

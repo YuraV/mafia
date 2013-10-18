@@ -46,13 +46,10 @@ class AppointmentsController < ApplicationController
 
   def get_remarks
     @appointment = @game.appointments(params[:appointment])
-    #render 'appointments/remarks', layout: false
   end
 
   def put_remarks
     @game.update_attributes(params.fetch(:game, {}))
-    #render nothing: true
-    #respond_with @game, @appointment
     respond_with(@game, @appointment) do |format|
       format.html{ render partial: 'games/display_remarks' if request.xhr? }
     end

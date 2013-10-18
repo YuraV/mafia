@@ -6,7 +6,7 @@
       %th{:style => 'width: 10%'}=sortable 'description','Description'
       %th{:style => 'width: 10%'} Manager
       %th{:style => 'width: 30%'} Players
-      %th{:style => 'width: 30%'}= sortable 'game_status', 'Game Status'
+      %th{:style => 'width: 30%'}= sortable 'game_status'
       %th{:style => 'width: 30%'}= sortable 'best_player', 'Best Player'
       %th{:style => 'width: 30%'}= sortable 'result', 'Result'
 
@@ -42,6 +42,10 @@
               %li
                 = link_to game_path(g), method: :delete do
                   %i.icon-trash
+                  Destroy
+              %li
+                = link_to game_path(g), method: :delete do
+                  %i.icon-arrow-up
                   Destroy
         -#%td= link_to 'Show', game_path(g), class:'btn'
         -#%td= link_to 'Edit', edit_game_path(g), class:'btn'
