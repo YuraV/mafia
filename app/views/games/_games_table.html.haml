@@ -10,9 +10,9 @@
       %th{:style => 'width: 30%'}= sortable 'best_player', 'Best Player'
       %th{:style => 'width: 30%'}= sortable 'result', 'Result'
 
-      %th{:style => 'width: 10%'} Show
-      %th{:style => 'width: 10%'} Update
-      %th{:style => 'width: 10%'} Destroy
+      %th{:style => 'width: 10%'} Actions
+      -#%th{:style => 'width: 10%'} Update
+      -#%th{:style => 'width: 10%'} Destroy
     - @games.each do |g|
       %tr
         %td= g.game_ref
@@ -25,9 +25,27 @@
         %td= g.best_player
         %td= g.result
 
-        %td= link_to 'Show', game_path(g), class:'btn'
-        %td= link_to 'Edit', edit_game_path(g), class:'btn'
-        %td= link_to 'Destroy', game_path(g), method: :delete,class:'btn btn-danger'
+        %td
+          .btn-group
+            -#=link_to ' ', '', class: 'btn btn-primary dropdown-toggle'
+            =link_to '', class: 'btn btn-primary dropdown-toggle' do
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                = link_to game_path(g) do
+                  %i.icon-th
+                  Show
+              %li
+                = link_to edit_game_path(g) do
+                  %i.icon-pencil
+                  Edit
+              %li
+                = link_to game_path(g), method: :delete do
+                  %i.icon-trash
+                  Destroy
+        -#%td= link_to 'Show', game_path(g), class:'btn'
+        -#%td= link_to 'Edit', edit_game_path(g), class:'btn'
+        -#%td= link_to 'Destroy', game_path(g), method: :delete,class:'btn btn-danger'
 .new
   = link_to "New", new_game_path, rel: 'facebox', class:'btn btn-primary'
 #pagination= will_paginate @games

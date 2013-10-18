@@ -261,7 +261,7 @@
 
 .div1 {
   border: 1px solid black;
-  width: 300px;
+  width: 360px;
   position: relative;
   min-height: 150px;
 
@@ -275,16 +275,32 @@
     }
   }
   .item2 {
-    width: 135px;
-    display: inline-block;
-    margin: 5px;
+
+    margin-top: 2px;
+
+    &:first-child {
+      margin-left: 5px;
+    }
 
     a {
-      text-align: left;
-      width: 110px;
+      &:first-child {
+        width: 120px;
+        text-align: left;
+      }
     }
   }
 
+}
+
+#sortable_table {
+  .dropdown-menu {
+    min-width: 100px;
+    width: 105px;
+  }
+
+  .btn-group {
+    margin-left: 10px;
+  }
 }
 
 .remark_separator {

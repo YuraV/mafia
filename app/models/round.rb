@@ -9,5 +9,4 @@ class Round < ActiveRecord::Base
   attr_accessible :appointment_id, :game_id, :kill, :vote, :user_id, :round_number
 
 
-
 end

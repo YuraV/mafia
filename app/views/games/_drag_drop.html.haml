@@ -15,11 +15,18 @@
     %strong
       - @game.appointments.each do |player|
         - unless player.id.nil?
-          .item2
-            = link_to game_appointment_path(@game, player), method: :delete, class: 'btn btn-primary' do
+          .btn-group.item2
+            %a.btn.btn-primary
               %i.icon-user.icon-white
               #{player.user.name}
               № #{player.player_number}
+            = link_to '#', class: 'btn btn-primary dropdown-toggle' do
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                =link_to game_appointment_path(@game, player), method: :delete do
+                  Delete
+                  %i.icon-trash
 
 
       - if @game.appointments.present?

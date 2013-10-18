@@ -52,3 +52,7 @@ $ ->
 
     )
     false
+
+  $(document).on 'click', 'a.dropdown-toggle', ->
+    $(this).parent('div').toggleClass('open')
+    return false
