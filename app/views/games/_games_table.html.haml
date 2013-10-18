@@ -8,6 +8,7 @@
       %th{:style => 'width: 30%'} Players
       %th{:style => 'width: 30%'}= sortable 'game_status', 'Game Status'
       %th{:style => 'width: 30%'}= sortable 'best_player', 'Best Player'
+      %th{:style => 'width: 30%'}= sortable 'result', 'Result'
 
       %th{:style => 'width: 10%'} Show
       %th{:style => 'width: 10%'} Update
@@ -22,6 +23,7 @@
             = a.user.alias
         %td= g.game_status
         %td= g.best_player
+        %td= g.result
 
         %td= link_to 'Show', game_path(g), class:'btn'
         %td= link_to 'Edit', edit_game_path(g), class:'btn'

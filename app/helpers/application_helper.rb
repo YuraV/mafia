@@ -12,4 +12,8 @@ module ApplicationHelper
     link_to title, params.merge(sort_column: column, sort_direction: direction, page: nil), {class: css_class}
   end
 
+
+
+
+
 end
