@@ -6,11 +6,11 @@
       %th{:style => 'width: 10%'}=sortable 'description','Description'
       %th{:style => 'width: 10%'} Manager
       %th{:style => 'width: 30%'} Players
-      %th{:style => 'width: 30%'}= sortable 'game_status'
+      %th{:style => 'width: 30%'}= sortable 'game_status', 'Game Status'
       %th{:style => 'width: 30%'}= sortable 'best_player', 'Best Player'
       %th{:style => 'width: 30%'}= sortable 'result', 'Result'
 
-      %th{:style => 'width: 10%'} Actions
+      %th{:style => 'width: 10%'}
       -#%th{:style => 'width: 10%'} Update
       -#%th{:style => 'width: 10%'} Destroy
     - @games.each do |g|
@@ -27,7 +27,7 @@
 
         %td
           .btn-group
-            -#=link_to ' ', '', class: 'btn btn-primary dropdown-toggle'
+            =link_to 'Actions', '', class: 'btn btn-primary dropdown-toggle'
             =link_to '', class: 'btn btn-primary dropdown-toggle' do
               %span.caret
             %ul.dropdown-menu
