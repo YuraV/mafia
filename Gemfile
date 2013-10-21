@@ -35,7 +35,11 @@ gem 'friendly_id', '~> 4.0.10.1'
 gem 'actionpack'
 gem 'will_paginate'
 gem 'underscore-rails'
+gem 'thin'
 
+group :development do 
+  gem 'quiet_assets' 
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
