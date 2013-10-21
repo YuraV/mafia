@@ -24,7 +24,6 @@ class Appointment < ActiveRecord::Base
 
   def set_score!
     if game.result == 'red'
-      self.update_attribute(:won, true)
       if self.team == 'red' && self.role == 'sherif'
         self.update_attribute(:score, 4 )
       elsif self.team == 'red'

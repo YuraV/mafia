@@ -33,7 +33,7 @@ class AppointmentsController < ApplicationController
   def set_role
     Rails.logger.info params
     @appointment = @game.appointments(params[:appointment])
-    render 'appointments/role', layout: false
+    #render 'appointments/role', layout: false
   end
 
   def put_roles
@@ -41,7 +41,10 @@ class AppointmentsController < ApplicationController
     @game.appointments.each do |appointment|
       appointment.set_team!
     end
-    respond_with @game, @appointment, location: game_path(@game)
+
+    respond_with(@game, @appointment) do |format|
+      format.html{ render partial: 'games/drop_zone' if request.xhr? }
+    end
   end
 
   def get_remarks

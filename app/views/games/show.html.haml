@@ -44,6 +44,14 @@
   = render 'appointments/remarks'
   = render 'appointments/role'
 
+- if @game.appointments.present?
+  .nav_button
+    .remove_all
+      = link_to 'Rolify', set_role_game_appointment_path(@game, @appointments), rel: '', class: 'btn rolify'
+    .remove_all
+      = link_to 'Remove All', destroy_all_game_appointment_path(@game, @appointments), method: :delete, class: 'btn'
+
+
 
 -#= link_to 'Create Round', new_game_round_path(@game)
 
