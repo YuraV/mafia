@@ -14,6 +14,13 @@
  */
 @import "bootstrap";
 
+.role_selection input {
+  width: 15px;
+  height: 15px;
+  margin-left: -15px;
+  margin-top: 5px;
+}
+
 .top_145_left_160 {
   position: relative;
   float: left;
@@ -165,6 +172,15 @@
 }
 
 .game_content {
+
+  font-family: 'Comic Sans MS', cursive;
+  line-height: 1em;
+  color: #7aa0ff;
+  font-weight:bold;
+  font-style:italic;
+  font-size: 20px;
+  text-shadow:0px 0px 0 rgb(92,130,225),1px 1px 0 rgb(72,110,205),2px 2px 0 rgb(52,90,185),3px 3px 0 rgb(32,70,165), 4px 4px 0 rgb(12,50,145),5px 5px 4px rgba(0,0,0,0.5),5px 5px 1px rgba(0,0,0,0.5),0px 0px 4px rgba(0,0,0,.2);
+  margin-bottom: 15px;
 }
 
 .separator {
@@ -490,4 +506,11 @@ th {
 .pretty th .desc {
   background-image: url(/images/arrows_grey.png);
   background-position: 15px 25px;
+}
+
+.finish {
+  float: right;
+  color: #fff;
+  text-shadow: 0px -1px 4px white, 0px -2px 10px yellow, 0px -10px 20px #ff8000, 0px -18px 40px red;
+  font: 25px 'BlackJackRegular';
 }
