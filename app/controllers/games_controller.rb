@@ -43,11 +43,11 @@ class GamesController < ApplicationController
   end
 
   def update
-
     @game.update_attributes(params[:game])
     @game.appointments.each do |a|
       a.set_score!
       a.won!
+      binding.pry
     end
     respond_with @game
   end
