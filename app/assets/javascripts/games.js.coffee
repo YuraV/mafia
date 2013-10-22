@@ -99,6 +99,8 @@ class window.Games
   remarkFormVisible: ->
     $('.put_remarks').hasClass('hidden')
 
+  rolesFormVisible: ->
+    $('.show_hide_role_container').hasClass('hidden')
 
   refreshDeadPlayer: ->
     $(document).on 'click', '.put_remarks form input[type="submit"]', ->
