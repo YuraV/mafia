@@ -20,19 +20,19 @@ class ScoresController < ApplicationController
     @score = Appointment.where(user_id: @user.id).count()
   end
 
-private
+  private
 
   def sort_column
     User.column_names.include?(params[:sort_column]) ? params[:sort_column] : 'created_at'
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:sort_direction]) ? params[:sort_direction]: 'asc'
+    %w[asc desc].include?(params[:sort_direction]) ? params[:sort_direction] : 'asc'
   end
 
   def pagination_items
     binding.pry
-    %w[10 20].include?params[:per_page]? params[:per_page]: 5
+    %w[10 20].include? params[:per_page] ? params[:per_page] : 5
   end
 
 end

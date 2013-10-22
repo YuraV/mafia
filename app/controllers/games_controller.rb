@@ -12,7 +12,7 @@ class GamesController < ApplicationController
     @games = Game.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 3).search(params[:search])
     respond_with do |format|
       format.html {
-          render :partial => 'games/games_table' if request.xhr?
+        render :partial => 'games/games_table' if request.xhr?
       }
     end
   end
@@ -77,7 +77,7 @@ class GamesController < ApplicationController
 
   def sort_direction
 
-    %w[asc desc].include?(params[:sort_direction]) ? params[:sort_direction]: 'asc'
+    %w[asc desc].include?(params[:sort_direction]) ? params[:sort_direction] : 'asc'
   end
 
 
