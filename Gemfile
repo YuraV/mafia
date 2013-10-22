@@ -37,8 +37,8 @@ gem 'will_paginate'
 gem 'underscore-rails'
 gem 'thin'
 
-group :development do 
-  gem 'quiet_assets' 
+group :development do
+  gem 'quiet_assets'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

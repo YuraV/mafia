@@ -9,28 +9,4 @@
             = player.name
 
 .dropzone-container
-  .div1.dropzone.add
-    .progress
-      Players:
-    %strong
-      - @game.appointments.each do |player|
-        - unless player.id.nil?
-          .btn-group.item2
-            %a.btn.btn-primary
-              %i.icon-user.icon-white
-              #{player.user.name}
-              № #{player.player_number}
-            = link_to '#', class: 'btn btn-primary dropdown-toggle' do
-              %span.caret
-            %ul.dropdown-menu
-              %li
-                =link_to game_appointment_path(@game, player), method: :delete do
-                  Delete
-                  %i.icon-trash
-
-
-      - if @game.appointments.present?
-        .remove_all
-          = link_to 'Remove All', destroy_all_game_appointment_path(@game, @appointments), method: :delete, class: 'btn'
-        .remove_all
-          = link_to 'Rolify', set_role_game_appointment_path(@game, @appointments), rel: '', class: 'btn'
+  = render partial: 'games/drop_zone'

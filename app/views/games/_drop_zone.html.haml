@@ -1,0 +1,19 @@
+.div1.dropzone.add
+  .progress
+    Players:
+  %strong
+    - @game.appointments.each do |player|
+      - unless player.id.nil?
+        .btn-group.item2{data:{remarks: player.remark}}
+          %a.btn.btn-primary
+            %i.icon-user.icon-white
+            #{player.user.name}
+            № #{player.player_number}
+
+          = link_to '#', {class: "btn btn-primary dropdown-toggle"} do
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              =link_to game_appointment_path(@game, player), method: :delete do
+                Delete
+                %i.icon-trash

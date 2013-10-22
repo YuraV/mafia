@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
 
   before_filter :find_game
-  respond_to :html,:js
+  respond_to :html, :js
 
   def create
     Rails.logger.info params
@@ -33,7 +33,7 @@ class AppointmentsController < ApplicationController
   def set_role
     Rails.logger.info params
     @appointment = @game.appointments(params[:appointment])
-    render 'appointments/role', layout: false
+    #render 'appointments/role', layout: false
   end
 
   def put_roles
@@ -41,7 +41,10 @@ class AppointmentsController < ApplicationController
     @game.appointments.each do |appointment|
       appointment.set_team!
     end
-    respond_with @game, @appointment, location: game_path(@game)
+
+    respond_with(@game, @appointment) do |format|
+      format.html { render partial: 'games/drop_zone' if request.xhr? }
+    end
   end
 
   def get_remarks
@@ -51,7 +54,8 @@ class AppointmentsController < ApplicationController
   def put_remarks
     @game.update_attributes(params.fetch(:game, {}))
     respond_with(@game, @appointment) do |format|
-      format.html{ render partial: 'games/display_remarks' if request.xhr? }
+      format.html { render partial: 'games/display_remarks' if request.xhr? }
+      format.html { render partial: 'games/drop_zone' }
     end
 
   end
