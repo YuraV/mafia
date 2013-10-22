@@ -12,7 +12,7 @@ class window.Games
     @sendDataRoleForm()
     @deadPlayer()
     @refreshDeadPlayer()
-    @showRolesButton()
+    @toggleShowRolesContainer()
 
 
   sortFunction: ->
@@ -49,12 +49,6 @@ class window.Games
         $('#sortable_table').html data
       false
 
-  toggleShowRemarksForm: ->
-    $(document).on 'click', 'a.remark_link', =>
-      $('.put_role').addClass('hidden') unless @roleFormVisible()
-      $('.top_145_left_160.put_remarks').toggleClass('hidden')
-      false
-
   sendDataRemarksForm: ->
     $('.put_remarks form.edit_game').on 'submit', ->
       url = $(this).attr('action')
@@ -83,10 +77,24 @@ class window.Games
 
   toggleShowRolesForm: ->
     $(document).on 'click', 'a.rolify', =>
-      unless @remarkFormVisible() && @rolesFormVisible()
-        $('.put_remarks').addClass('hidden')
-        $('.show_hide_role_container').addClass('hidden')
+      $('.put_remarks').addClass('hidden')
+      $('.show_hide_role_container').addClass('hidden')
       $('.top_145_left_160.put_role').toggleClass('hidden')
+      false
+
+  toggleShowRolesContainer: ->
+    $(document).on 'click', '.show_hide_role', ->
+      $('.put_remarks').addClass('hidden')
+      $('.put_role').addClass('hidden')
+      $('.top_145_left_160.show_hide_role_container').toggleClass('hidden')
+
+      false
+
+  toggleShowRemarksForm: ->
+    $(document).on 'click', 'a.remark_link', =>
+      $('.put_role').addClass('hidden')
+      $('.show_hide_role_container').addClass('hidden')
+      $('.top_145_left_160.put_remarks').toggleClass('hidden')
       false
 
 
@@ -101,7 +109,7 @@ class window.Games
   remarkFormVisible: ->
     $('.put_remarks').hasClass('hidden')
 
-  rolesFormVisible: ->
+  roleShowFormVisible: ->
     $('.show_hide_role_container').hasClass('hidden')
 
   refreshDeadPlayer: ->
@@ -112,9 +120,3 @@ class window.Games
   deadPlayer: ->
     $('.item2').each ->
       $(this).children('a').addClass('btn-danger') if $(this).data('remarks') == 4
-
-  showRolesButton: ->
-    $(document).on 'click', '.show_hide_role', ->
-      $('.show_hide_role_container').toggleClass('hidden')
-
-      false
