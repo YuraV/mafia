@@ -10,6 +10,8 @@ class window.Games
     @Actions()
     @toggleShowRolesForm()
     @sendDataRoleForm()
+    @deadPlayer()
+    @refreshDeadPlayer()
 
 
   sortFunction: ->
@@ -73,6 +75,7 @@ class window.Games
 
     $('.put_remarks form.edit_game').on 'submit', ->
 
+
       url = $(this).attr('action')
 
       $.ajax
@@ -125,3 +128,13 @@ class window.Games
 
   remarkFormVisible: ->
     $('.put_remarks').hasClass('hidden')
+
+
+  refreshDeadPlayer: ->
+    $(document).on 'click', '.put_remarks form input[type="submit"]', ->
+      $('.item2').each ->
+        $(this).children('a').addClass('btn-danger') if $(this).data('remarks') == 4
+
+  deadPlayer: ->
+    $('.item2').each ->
+      $(this).children('a').addClass('btn-danger') if $(this).data('remarks') == 4
