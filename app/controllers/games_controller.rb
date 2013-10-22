@@ -9,7 +9,7 @@ class GamesController < ApplicationController
   respond_to :html
 
   def index
-    @games = Game.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 3).search(params[:search])
+    @games = Game.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 5).search(params[:search])
     respond_with do |format|
       format.html {
         render :partial => 'games/games_table' if request.xhr?
