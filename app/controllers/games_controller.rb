@@ -47,7 +47,7 @@ class GamesController < ApplicationController
     @game.appointments.each do |a|
       a.set_score!
       a.won!
-      binding.pry
+    
     end
     respond_with @game
   end
