@@ -45,7 +45,7 @@ class window.Games
         dataType: 'HTML',
         type: 'GET',
         url: formAction + '?utf8=✓&search=' + searchData,
-      .success(data) ->
+      .success (data) ->
         $('#sortable_table').html data
       false
 
@@ -83,7 +83,9 @@ class window.Games
 
   toggleShowRolesForm: ->
     $(document).on 'click', 'a.rolify', =>
-      $('.put_remarks').addClass('hidden') unless @remarkFormVisible()
+      unless @remarkFormVisible() && @rolesFormVisible()
+        $('.put_remarks').addClass('hidden')
+        $('.show_hide_role_container').addClass('hidden')
       $('.top_145_left_160.put_role').toggleClass('hidden')
       false
 
@@ -99,6 +101,8 @@ class window.Games
   remarkFormVisible: ->
     $('.put_remarks').hasClass('hidden')
 
+  rolesFormVisible: ->
+    $('.show_hide_role_container').hasClass('hidden')
 
   refreshDeadPlayer: ->
     $(document).on 'click', '.put_remarks form input[type="submit"]', ->
@@ -111,6 +115,6 @@ class window.Games
 
   showRolesButton: ->
     $(document).on 'click', '.show_hide_role', ->
-      $('.show_hide_role_container').toggleClass('hidden') if ($(this).data('confirm'))
+      $('.show_hide_role_container').toggleClass('hidden')
 
       false
