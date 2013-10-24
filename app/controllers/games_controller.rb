@@ -49,6 +49,7 @@ class GamesController < ApplicationController
       a.won!
     end
     respond_with @game
+    
   end
 
   def destroy
