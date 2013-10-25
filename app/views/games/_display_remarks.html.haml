@@ -4,7 +4,7 @@
     - if player.remark.present? && player.remark != 0
 
       .remark_separator
-        .player
+        .player{data:{remarks: player.remark}}
           = player.user.name
         .remark
           = player.remark

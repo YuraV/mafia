@@ -55,7 +55,6 @@ class AppointmentsController < ApplicationController
     @game.update_attributes(params.fetch(:game, {}))
     respond_with(@game, @appointment) do |format|
       format.html { render partial: 'games/display_remarks' if request.xhr? }
-      format.html { render partial: 'games/drop_zone' }
     end
 
   end

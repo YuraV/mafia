@@ -15,6 +15,20 @@ class window.Games
     @toggleShowRolesContainer()
 
 
+  deadPlayer: ->
+    $('.remark_separator .player').each ->
+
+      if $(this).data('remarks') == 4
+        player = $(this).text()
+        player = player.replace(/\s+/g, '');
+        select_dead = $('.dropzone .item2 a:contains('+player+')').addClass('btn-danger')
+        select_dead.next().addClass('btn-danger')
+      else if $(this).data('remarks') != 4
+        player = $(this).text()
+        player = player.replace(/\s+/g, '');
+        select_dead = $('.dropzone .item2 a:contains('+player+')').removeClass('btn-danger')
+        select_dead.next().removeClass('btn-danger')
+
   sortFunction: ->
     $(document).delegate '#sortable_table th a', 'click', ->
       $.ajax $(this).prop('href'),
@@ -50,6 +64,7 @@ class window.Games
       false
 
   sendDataRemarksForm: ->
+    self = @
     $('.put_remarks form.edit_game').on 'submit', ->
       url = $(this).attr('action')
       $.ajax
@@ -57,9 +72,10 @@ class window.Games
         type: 'PUT',
         url: url
         data: $(this).serialize()
-      .success (data) ->
+      .success (data)=>
           $('.div2').replaceWith(data)
           $('.put_remarks').addClass('hidden')
+          self.deadPlayer()
       false
 
   sendDataRoleForm: ->
@@ -117,6 +133,4 @@ class window.Games
       $('.item2').each ->
         $(this).children('a').addClass('btn-danger') if $(this).data('remarks') == 4
 
-  deadPlayer: ->
-    $('.item2').each ->
-      $(this).children('a').addClass('btn-danger') if $(this).data('remarks') == 4
+

@@ -4,7 +4,7 @@
   %strong
     - @game.appointments.each do |player|
       - unless player.id.nil?
-        .btn-group.item2{data:{remarks: player.remark}}
+        .btn-group.item2
           %a.btn.btn-primary
             %i.icon-user.icon-white
             #{player.user.name}
