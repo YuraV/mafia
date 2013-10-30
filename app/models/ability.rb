@@ -5,14 +5,14 @@ class Ability
 
     user ||= User.new # guest user (not logged in)
 
-    if user.is_admin?
+    if user.has_role? :admin
       can :manage, :all
     else
       can :read, Game
       can :read, Appointment
     end
 
-    if user.is_player?
+    if user.has_role? :player
       can :create, Game
       can :create, Appointment
       can :update, Appointment
