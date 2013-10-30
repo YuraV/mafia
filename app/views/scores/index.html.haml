@@ -3,7 +3,7 @@
     = link_to 'Games',games_path
   %li.active
     = link_to 'Scores', scores_path
-  - if current_user.is_admin?
+  - if can? :manage_roles, @user
     %li
       = link_to 'Users', users_path
 = form_tag @user, method: :get, class: 'form-search', id: 'search' do

@@ -5,18 +5,20 @@ class Ability
 
     user ||= User.new # guest user (not logged in)
 
-    if user.is_admin?
+    if user.role_name == 'admin'
       can :manage, :all
     else
-      can :read, :all
+      can :read, Game
+      can :read, Appointment
     end
 
-    if user.is_player?
+    if user.role_name == 'player'
       can :create, Game
       can :create, Appointment
       can :update, Appointment
     else
-      can :read, :all
+      can :read, Game
+      can :read, Appointment
     end
 
     # Define abilities for the passed in user here. For example:
