@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  load_and_authorize_resource
 
   helper_method :sort_column, :sort_direction
 
@@ -9,7 +10,11 @@ class GamesController < ApplicationController
   respond_to :html
 
   def index
+<<<<<<< HEAD
     @games = Game.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 5).search(params[:search])
+=======
+    @games = Game.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 4).search(params[:search])
+>>>>>>> daf117662906a91d697a4192bc53e3668f231d52
     respond_with do |format|
       format.html {
         render :partial => 'games/games_table' if request.xhr?
@@ -23,7 +28,6 @@ class GamesController < ApplicationController
   end
 
   def new
-    @game = Game.new
     render "games/new", layout: false
   end
 

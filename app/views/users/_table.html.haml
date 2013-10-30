@@ -1,0 +1,16 @@
+%table.table.table-striped.table-bordered.bordered.zebra
+
+  %thead
+    %tr
+      %th{:style => 'width: 10%'} User ID
+      %th{:style => 'width: 10%'}=sortable 'name','name'
+      %th{:style => 'width: 10%'} E-mail
+      %th{:style => 'width: 30%'}
+
+    - @users.each do |user|
+      %tr
+        %td= user.id
+        %td= user.name
+        %td= user.email
+        %td Actions
+#pagination= will_paginate @users

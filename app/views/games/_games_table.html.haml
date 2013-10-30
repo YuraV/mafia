@@ -46,7 +46,8 @@
         -#%td= link_to 'Show', game_path(g), class:'btn'
         -#%td= link_to 'Edit', edit_game_path(g), class:'btn'
         -#%td= link_to 'Destroy', game_path(g), method: :delete,class:'btn btn-danger'
-.new
-  = link_to "New", new_game_path, rel: 'facebox', class:'btn btn-primary'
+- if can? :create, @game
+  .new
+    = link_to "New", new_game_path, rel: 'facebox', class:'btn btn-primary'
 #pagination= will_paginate @games
-%span.glyphicon.glyphicon-link
+

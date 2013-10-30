@@ -1,5 +1,6 @@
 #require 'services/reference'
 class Game < ActiveRecord::Base
+  resourcify
 
 
   attr_accessible :game_status, :result, :description, :game_manager, :appointments_attributes, :best_player, :game_ref,:first_killed_sherif
