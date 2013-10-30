@@ -5,10 +5,10 @@
       %th{:style => 'width: 10%'} ID
       %th{:style => 'width: 10%'}=sortable 'description','Description'
       %th{:style => 'width: 10%'} Manager
-      %th{:style => 'width: 30%'} Players
-      %th{:style => 'width: 30%'}= sortable 'game_status', 'Game Status'
+      %th{:style => 'width: 40%'} Players
+      %th{:style => 'width: 10%'}= sortable 'game_status', 'Game Status'
       %th{:style => 'width: 30%'}= sortable 'best_player', 'Best Player'
-      %th{:style => 'width: 30%'}= sortable 'result', 'Result'
+      %th{:style => 'width: 10%'}= sortable 'result', 'Result'
 
       %th{:style => 'width: 10%'}
       -#%th{:style => 'width: 10%'} Update
@@ -19,8 +19,8 @@
         %td= g.description
         %td= g.manager.user.name
         %td
-          - g.appointments.each do |a|
-            = a.user.alias
+          -g.appointments.each do |a|
+            =image_tag 'mafia.jpeg' 
         %td= g.game_status
         %td= g.best_player
         %td= g.result
@@ -49,3 +49,4 @@
 .new
   = link_to "New", new_game_path, rel: 'facebox', class:'btn btn-primary'
 #pagination= will_paginate @games
+%span.glyphicon.glyphicon-link
