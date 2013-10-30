@@ -1,4 +1,6 @@
 class Appointment < ActiveRecord::Base
+  resourcify
+
   belongs_to :game
   belongs_to :user
 
@@ -31,7 +33,7 @@ class Appointment < ActiveRecord::Base
         self.update_attribute(:score, -1)
       elsif self.team =='black'
         self.update_attribute(:score, 0 )
-      end  
+      end
     elsif game.result == 'black'
       if self.team == 'black' && self.role == 'Don'
         self.update_attribute(:score, 5)

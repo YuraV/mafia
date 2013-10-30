@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  load_and_authorize_resource
 
   helper_method :sort_column, :sort_direction
 
@@ -23,7 +24,6 @@ class GamesController < ApplicationController
   end
 
   def new
-    @game = Game.new
     render "games/new", layout: false
   end
 

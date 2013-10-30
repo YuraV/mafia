@@ -21,5 +21,8 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation
+  -#%div
+  -#  %br/
+  -#  = f.association :roles, as: :select
   %div= f.submit "Sign up"
 = render "devise/shared/links"

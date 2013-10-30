@@ -24,6 +24,8 @@ Mafia::Application.routes.draw do
 
   end
 
+  resources :users
+
 
   resources :scores
 
