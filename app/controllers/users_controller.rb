@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 3).search(params[:search])
+    @users = User.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10).search(params[:search])
     respond_with do |format|
       format.html {
         render :partial => 'users/table' if request.xhr?
@@ -14,9 +14,32 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
+  def edit
+
+  end
+
   def update
-    @user = User.find(params[:id])
     @user.update_attributes(params[:user])
+    redirect_to users_path
+  end
+
+  def new
+
+  end
+
+  def create
+    @user = User.create(params[:user])
+    binding.pry
+    redirect_to users_path
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to users_path
   end
 
 

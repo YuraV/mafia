@@ -373,7 +373,7 @@ table th {
 }
 
 .player {
-  min-width: 90px;
+  min-width: 160px;
   margin-left: 15px;
   display: inline-block;
   font-family: Garamond, serif;
@@ -413,6 +413,11 @@ table th {
     color: white;
   }
 }
+.item_finish {
+  width: 140px;
+  text-align: left;
+  margin: 10px 2px 0 0;
+}
 
 .remove_all {
 
@@ -434,8 +439,10 @@ table th {
 
 .set_remarks {
   margin-top: 15px;
+  padding-right: 15px;
 
   a {
+    margin-left: 10px;
     width: 160px;
     text-decoration: none;
     color: dodgerblue;

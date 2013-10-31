@@ -52,8 +52,8 @@
       = link_to 'Rolify', set_role_game_appointment_path(@game, @appointments), rel: '', class: 'btn rolify'
     .remove_all
       = link_to 'Remove All', destroy_all_game_appointment_path(@game, @appointments), method: :delete, class: 'btn'
-    .remove_all
-      = link_to 'Show/Hide Roles', '', class: 'btn show_hide_role'
+    -#.remove_all
+    -#  = link_to 'Show/Hide Roles', '', class: 'btn show_hide_role'
 
 
 -#= link_to 'Create Round', new_game_round_path(@game)

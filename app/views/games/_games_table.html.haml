@@ -20,7 +20,7 @@
         %td= g.manager.user.name
         %td
           -g.appointments.each do |a|
-            =image_tag 'mafia.jpeg' 
+            =image_tag 'mafia.jpeg'
         %td= g.game_status
         %td= g.best_player
         %td= g.result
@@ -43,9 +43,6 @@
                 = link_to game_path(g), method: :delete do
                   %i.icon-trash
                   Destroy
-        -#%td= link_to 'Show', game_path(g), class:'btn'
-        -#%td= link_to 'Edit', edit_game_path(g), class:'btn'
-        -#%td= link_to 'Destroy', game_path(g), method: :delete,class:'btn btn-danger'
 - if can? :create, @game
   .new
     = link_to "New", new_game_path, rel: 'facebox', class:'btn btn-primary'
