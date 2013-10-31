@@ -12,8 +12,7 @@ class Ability
     end
 
     if user.has_role? :player
-      can :create, [Game, Appointment]
-      can :update, Appointment
+      can :manage, [Game, Appointment]
     else
       can :read, [Game, Appointment]
     end

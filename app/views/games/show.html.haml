@@ -5,7 +5,7 @@
       %strong
         = @game.description
         %span.finish
-          = link_to 'Finish Game', game_best_player_path(@game), rel: 'facebox'
+          = link_to 'Finish Game', game_best_player_path(@game), rel: 'facebox' if can? :update, @game
 
   %div
     %span

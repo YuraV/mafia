@@ -5,8 +5,7 @@ class window.Games
     @paginationFunction()
     @searchPreventDefault()
     @searchFunction()
-    @toggleShowRemarksForm()
-    @sendDataRemarksForm()
+#    @toggleShowRemarksForm()
     @Actions()
     @toggleShowRolesForm()
     @sendDataRoleForm()
@@ -50,20 +49,7 @@ class window.Games
         $('#sortable_table').html data
       false
 
-  sendDataRemarksForm: ->
-    self = @
-    $('.put_remarks form.edit_game').on 'submit', ->
-      url = $(this).attr('action')
-      $.ajax
-        dataType: 'HTML',
-        type: 'PUT',
-        url: url
-        data: $(this).serialize()
-      .success (data) ->
-          $('.div2').replaceWith(data)
-          $('.put_remarks').addClass('hidden')
-          self.deadPlayer()
-      false
+
 
   sendDataRoleForm: ->
     $('.put_role form').on 'submit', ->
@@ -93,12 +79,7 @@ class window.Games
 
       false
 
-  toggleShowRemarksForm: ->
-    $(document).on 'click', 'a.remark_link', =>
-      $('.put_role').addClass('hidden')
-      $('.show_hide_role_container').addClass('hidden')
-      $('.top_145_left_160.put_remarks').toggleClass('hidden')
-      false
+
 
 
   Actions: ->
@@ -106,14 +87,14 @@ class window.Games
       $(this).parent('div').toggleClass('open')
       return false
 
-  roleFormVisible: ->
-    $('.put_role').hasClass('hidden')
-
-  remarkFormVisible: ->
-    $('.put_remarks').hasClass('hidden')
-
-  roleShowFormVisible: ->
-    $('.show_hide_role_container').hasClass('hidden')
+#  roleFormVisible: ->
+#    $('.put_role').hasClass('hidden')
+#
+#  remarkFormVisible: ->
+#    $('.put_remarks').hasClass('hidden')
+#
+#  roleShowFormVisible: ->
+#    $('.show_hide_role_container').hasClass('hidden')
 
   refreshDeadPlayer: ->
     $(document).on 'click', '.put_remarks form input[type="submit"]', ->
