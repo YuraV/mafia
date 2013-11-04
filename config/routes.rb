@@ -1,7 +1,12 @@
 Mafia::Application.routes.draw do
 
   devise_for :users, :path_prefix => 'my'
-  resources :users
+  resources :users do
+    resources :player_roles
+  end
+
+
+
 
   resources :games do
     get :best_player
