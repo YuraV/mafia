@@ -14,3 +14,7 @@ DOES NOT WORK AS WELL, TRYING TO EXTRACT ROLIFY PROCESS OUT FROM APPOINTMENTS MO
 </br>
 
 APPOINTMENTS CAN BE CONSIDERED AS PLAYERS INSIDE OF GAME
+
+
+Before start you need to register new User<br>
+after set admin role for your user via rails c using next command user.add_role('admin')
