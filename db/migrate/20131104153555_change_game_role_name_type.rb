@@ -6,3 +6,4 @@ class ChangeGameRoleNameType < ActiveRecord::Migration
   def down
   end
 end
+
