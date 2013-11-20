@@ -99,10 +99,10 @@ class window.Drag_Drop
       ).get()
       game_id = $('.game').data('id')
       $s.remove()
-      $.ajax '/games/'+game_id+'/appointments/create_bunch',
+      $.ajax '/games/'+game_id+'/players/create_bunch',
         type: 'post'
         data:
-          appointment_data: userData,
+          player_data: userData,
         success: location.reload()
 
 

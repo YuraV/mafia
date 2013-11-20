@@ -1,6 +1,6 @@
 .top_145_left_160.hidden.put_remarks
-  = form_for @game, :url => put_remarks_game_appointments_path(@game) do |f|
-    = f.fields_for :appointments do |a_f|
+  = form_for @game, :url => put_remarks_game_players_path(@game) do |f|
+    = f.fields_for :players do |a_f|
       - unless a_f.object_id.nil?
         %div
           .player

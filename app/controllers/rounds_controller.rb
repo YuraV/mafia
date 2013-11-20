@@ -9,7 +9,7 @@ class RoundsController < ApplicationController
   def new
 
     @round = Round.new
-    @players = @game.appointments.pluck(:user_id)
+    @players = @game.players.pluck(:user_id)
   end
 
   def create

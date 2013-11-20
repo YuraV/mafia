@@ -13,7 +13,7 @@ Mafia::Application.routes.draw do
 
     resources :rounds
 
-    resources :appointments do
+    resources :players do
       collection do
         post :create_bunch
         put :put_roles

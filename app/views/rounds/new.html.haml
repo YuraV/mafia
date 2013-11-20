@@ -1,5 +1,5 @@
 = form_for [@game, @round] do |f|
-  -#= f.fields_for :appointments, @game.appointments.build do |a_f|
+  -#= f.fields_for :players, @game.players.build do |a_f|
     -#= f.check_box :user_id
     -#= f.label 'user_id', a_f.object
 
@@ -13,7 +13,7 @@
   = f.label 'kill'
   = f.check_box :vote
   = f.label 'vote'
-  = f.fields_for @game.appointments do |a_f|
+  = f.fields_for @game.players do |a_f|
     = 1
 
 
@@ -31,7 +31,7 @@
 
 
 -#= form_for @game, :url => put_roles_game_appointments_path(@game) do |f|
--#  = f.fields_for :appointments do |a_f|
+-#  = f.fields_for :players do |a_f|
 -#    - unless a_f.object_id.nil?
 -#      .roles_content
 -#        .player_name

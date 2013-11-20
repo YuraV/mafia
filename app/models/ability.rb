@@ -8,13 +8,13 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     else
-      can :read, [Game, Appointment]
+      can :read, [Game, Player]
     end
 
     if user.has_role? :player
-      can :manage, [Game, Appointment]
+      can :manage, [Game, Player]
     else
-      can :read, [Game, Appointment]
+      can :read, [Game, Player]
     end
 
     # Define abilities for the passed in user here. For example:

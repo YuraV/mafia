@@ -1,11 +1,11 @@
 module ScoresHelper
 
   def red_score(user)
-    Appointment.where(user_id: user.id, team: 'red', won: '1').count()
+    Player.where(user_id: user.id, team: 'red', won: '1').count()
   end
 
   def black_score(user)
-    Appointment.where(user_id: user.id, team: 'black', won: '1').count()
+    Player.where(user_id: user.id, team: 'black', won: '1').count()
   end
 
   def won(user)
@@ -13,11 +13,11 @@ module ScoresHelper
   end
 
   def overall_games(user)
-    Appointment.where(user_id: user.id).count()
+    Player.where(user_id: user.id).count()
   end
 
   def points(user)
-    Appointment.where(user_id: user.id).sum(:score)
+    Player.where(user_id: user.id).sum(:score)
   end
 
   def ratio(user)

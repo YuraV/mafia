@@ -1,4 +1,4 @@
-class Appointment < ActiveRecord::Base
+class Player < ActiveRecord::Base
   resourcify
 
   belongs_to :game

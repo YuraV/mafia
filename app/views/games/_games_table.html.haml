@@ -5,7 +5,7 @@
       %th{:style => 'width: 10%'} ID
       %th{:style => 'width: 10%'}=sortable 'description','Description'
       %th{:style => 'width: 10%'} Manager
-      %th{:style => 'width: 40%'} Players
+      %th{:style => 'width: 40%'} players
       %th{:style => 'width: 10%'}= sortable 'game_status', 'Game Status'
       %th{:style => 'width: 30%'}= sortable 'best_player', 'Best Player'
       %th{:style => 'width: 10%'}= sortable 'result', 'Result'
@@ -19,7 +19,7 @@
         %td= g.description
         %td= g.manager.user.name
         %td
-          -g.appointments.each do |a|
+          -g.players.each do |a|
             =image_tag 'mafia.jpeg'
         %td= g.game_status
         %td= g.best_player

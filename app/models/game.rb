@@ -3,12 +3,12 @@ class Game < ActiveRecord::Base
   resourcify
 
 
-  attr_accessible :game_status, :result, :description, :game_manager, :appointments_attributes, :best_player, :game_ref,:first_killed_sherif
+  attr_accessible :game_status, :result, :description, :game_manager, :players_attributes, :best_player, :game_ref,:first_killed_sherif
 
   attr_accessor :game_manager
   attr_accessor :gamer
 
-  has_many :appointments, dependent: :destroy
+  has_many :players, dependent: :destroy
 
   has_many :users, :through => :appointments
 
@@ -18,7 +18,7 @@ class Game < ActiveRecord::Base
 
   has_one :manager, dependent: :destroy
 
-  accepts_nested_attributes_for :appointments
+  accepts_nested_attributes_for :players
 
   before_create :generate_game_ref
   after_create :create_manager

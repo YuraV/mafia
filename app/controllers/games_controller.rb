@@ -19,7 +19,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @used_ids = (@game.appointments.pluck(:user_id)) + [@game.manager.user_id]
+    @used_ids = (@game.players.pluck(:user_id)) + [@game.manager.user_id]
 
   end
 
@@ -38,13 +38,13 @@ class GamesController < ApplicationController
 
   def best_player
     @game = Game.find(params[:game_id])
-    @best_player = @game.appointments.pluck(:user_id)
+    @best_player = @game.players.pluck(:user_id)
     render 'games/best_player', layout: false
   end
 
   def update
     @game.update_attributes(params[:game])
-    @game.appointments.each do |a|
+    @game.players.each do |a|
       a.set_score!
       a.won!
     end
@@ -68,7 +68,7 @@ class GamesController < ApplicationController
   end
 
   def appointment_scoped
-    @appointments = Appointment.scoped
+    @players = Player.scoped
   end
 
   def sort_column

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :alias, :role_ids
   # attr_accessible :title, :body
 
-  has_many :appointments
+  has_many :players
   has_many :games, :through => :appointments
 
 

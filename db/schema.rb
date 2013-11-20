@@ -11,22 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131104154942) do
+ActiveRecord::Schema.define(:version => 20131120115941) do
 
-  create_table "appointments", :force => true do |t|
+  create_table "appointment_roles", :force => true do |t|
     t.integer  "user_id"
     t.integer  "game_id"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
-    t.string   "role"
-    t.integer  "score"
-    t.string   "team"
-    t.integer  "player_number"
-    t.boolean  "won"
-    t.integer  "remark",        :default => 0
+    t.integer  "appointment_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "game_role_id"
   end
-
-  add_index "appointments", ["user_id"], :name => "index_appointments_on_user_id"
 
   create_table "game_roles", :force => true do |t|
     t.string   "name"
@@ -52,13 +46,20 @@ ActiveRecord::Schema.define(:version => 20131104154942) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "player_roles", :force => true do |t|
+  create_table "players", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "game_role_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
     t.integer  "game_id"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.string   "role"
+    t.integer  "score"
+    t.string   "team"
+    t.integer  "player_number"
+    t.boolean  "won"
+    t.integer  "remark",        :default => 0
   end
+
+  add_index "players", ["user_id"], :name => "index_appointments_on_user_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -70,17 +71,6 @@ ActiveRecord::Schema.define(:version => 20131104154942) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
-
-  create_table "rounds", :force => true do |t|
-    t.integer  "appointment_id"
-    t.integer  "game_id"
-    t.integer  "user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.integer  "round_number"
-    t.boolean  "kill"
-    t.boolean  "vote"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
