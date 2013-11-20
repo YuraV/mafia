@@ -23,7 +23,6 @@ class Player < ActiveRecord::Base
   end
 
   def set_score!
-   # roles = {'citizen'=>3,'don'=>5,'mafia'=>4,'loser':0,'main'=>-1,'sherif'=>4}
     if game.result == 'red'
       if self.team == 'red' && self.role == 'sherif'
         self.update_attribute(:score, 4 )
