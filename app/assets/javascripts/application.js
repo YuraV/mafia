@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require jquery.facebox
 //= require jquery.noSelectText
+//= require bootstrap 
 //= require_tree .
