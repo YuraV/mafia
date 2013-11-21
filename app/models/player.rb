@@ -9,7 +9,7 @@ class Player < ActiveRecord::Base
 
   delegate :result_black?, :result_red?, to: :game
 
-  PLAYER_ROLE = ['Don','mafia','sherif','citizen',].freeze
+  PLAYER_ROLE = ['don','mafia','sherif','citizen',].freeze
   #def methods  is_don? is_mafia? is_sherif? is_citizen?
   PLAYER_ROLE.each do |type|
     define_method("is_#{type}?") {role.to_s == type}
@@ -22,7 +22,7 @@ class Player < ActiveRecord::Base
   end
 
   def set_team!
-    if self.is_Don?
+    if self.is_don?
       self.update_attribute(:team, 'black')
     elsif self.is_mafia?
       self.update_attribute(:team, 'black')
@@ -38,13 +38,13 @@ class Player < ActiveRecord::Base
         update_attribute(:score, 4 )
       elsif team_red?
         update_attribute(:score, 3 )
-      elsif team_black? && is_Don?
+      elsif team_black? && is_don?
         update_attribute(:score, -1)
       elsif team_black?
         update_attribute(:score, 0 )
       end
     elsif game.result_black?
-      if team_black? && self.is_Don?
+      if team_black? && self.is_don?
         update_attribute(:score, 5)
       elsif team_black?
         update_attribute(:score, 4)
