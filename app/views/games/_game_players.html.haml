@@ -1,7 +1,15 @@
 .game_players
   - @game.players.each do |player|
     .btn.item_finish{disabled: true}
-      %br= "name: #{player.user.name}"
-      %br= "role: #{player.role}"
-      %br= "score: #{player.score}"
-      %br= "number: #{player.player_number}"
+      %br
+        %b name:
+        = "#{player.user.name}"
+      %br
+        %b role:
+        = "#{player.role}"
+      %br
+        %b score:
+        = "#{player.score}"
+      %br
+        %b number:
+        = "#{player.player_number}"

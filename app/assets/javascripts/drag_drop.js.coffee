@@ -33,9 +33,15 @@ class window.Drag_Drop
     jQuery.event.props.push "dataTransfer"
     jQuery.event.props.push "pageX"
     jQuery.event.props.push "pageY"
+
     $(".item").on("click", (e) ->
+      count = $('.selected').length
       e.preventDefault()
-      $(this).toggleClass "selected"
+      if count == 10
+        $(this).removeClass "selected"
+#        false
+      else
+        $(this).toggleClass "selected"
       @draggable = $(this).hasClass("selected")
     ).on("dragstart", (e) ->
       html = ""

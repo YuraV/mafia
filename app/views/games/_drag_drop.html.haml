@@ -5,7 +5,7 @@
     .items
       - can_be_player.each do |player|
         - unless player.id == nil
-          .btn.btn-inverse.item{:data => {:id => "#{player.id}"}}
+          .btn.btn-inverse.noSelect.item{:data => {:id => "#{player.id}"}}
             = player.name
 
 .dropzone-container
