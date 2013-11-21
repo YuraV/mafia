@@ -7,13 +7,21 @@ class Player < ActiveRecord::Base
   attr_accessible :user_id, :game_id, :id, :role, :team, :player_number, :remark
   validates :user_id, presence: true
 
+  PLAYER_ROLE = ['Don','mafia','sherif','citizen',]
+
+  #def methods  is_don? is_mafia? is_sherif? is_citizen?
+  PLAYER_ROLE.each do |type|
+    define_method("is_#{type}?") {role.to_s == type}
+  end
+
+
 
   def set_team!
 
-    if self.role == 'Don'
+    if self.is_Don?
       self.update_attribute(:team, 'black')
 
-    elsif self.role == 'mafia'
+    elsif self.is_mafia?
       self.update_attribute(:team, 'black')
 
     else
