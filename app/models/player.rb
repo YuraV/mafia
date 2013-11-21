@@ -7,23 +7,25 @@ class Player < ActiveRecord::Base
   attr_accessible :user_id, :game_id, :id, :role, :team, :player_number, :remark
   validates :user_id, presence: true
 
-  PLAYER_ROLE = ['Don','mafia','sherif','citizen',]
+  delegate :result_black?, :result_red?, to: :game
 
+  PLAYER_ROLE = ['Don','mafia','sherif','citizen',].freeze
   #def methods  is_don? is_mafia? is_sherif? is_citizen?
   PLAYER_ROLE.each do |type|
     define_method("is_#{type}?") {role.to_s == type}
   end
 
-
+  PLAYER_TEAM = ['red', 'black'].freeze
+  #def methods team_red? team_black?
+  PLAYER_TEAM.each do |type|
+    define_method("team_#{type}?") {team.to_s == type}
+  end
 
   def set_team!
-
     if self.is_Don?
       self.update_attribute(:team, 'black')
-
     elsif self.is_mafia?
       self.update_attribute(:team, 'black')
-
     else
       self.update_attribute(:team, 'red')
     end
@@ -31,45 +33,44 @@ class Player < ActiveRecord::Base
   end
 
   def set_score!
-    if game.result == 'red'
-      if self.team == 'red' && self.role == 'sherif'
-        self.update_attribute(:score, 4 )
-      elsif self.team == 'red'
-        self.update_attribute(:score, 3 )
-      elsif self.team =='black' && self.role =='Don'
-        self.update_attribute(:score, -1)
-      elsif self.team =='black'
-        self.update_attribute(:score, 0 )
+    if game.result_red?
+      if team_red? && is_sherif?
+        update_attribute(:score, 4 )
+      elsif team_red?
+        update_attribute(:score, 3 )
+      elsif team_black? && is_Don?
+        update_attribute(:score, -1)
+      elsif team_black?
+        update_attribute(:score, 0 )
       end
-    elsif game.result == 'black'
-      if self.team == 'black' && self.role == 'Don'
-        self.update_attribute(:score, 5)
-      elsif team == 'black'
-        self.update_attribute(:score, 4)
-      elsif team == 'red' && self.role == 'sherif' && !game.first_killed_sherif
-        self.update_attribute(:score, -1)
-      elsif team == 'red'
-        self.update_attribute(:score, 0)
+    elsif game.result_black?
+      if team_black? && self.is_Don?
+        update_attribute(:score, 5)
+      elsif team_black?
+        update_attribute(:score, 4)
+      elsif team_red? && is_sherif? && !game.first_killed_sherif
+        update_attribute(:score, -1)
+      elsif team_red?
+        update_attribute(:score, 0)
       end
     else
-      self.update_attribute(:score, 0 )
+      update_attribute(:score, 0 )
     end
   end
 
   def won!
-    if game.result == 'red'
-      if self.team == 'red'
-        self.update_attribute(:won, true)
-      elsif self.team == 'black'
-        self.update_attribute(:won, false)
+    if game.result_red?
+      if team_red?
+        update_attribute(:won, true)
+      elsif team_black?
+        update_attribute(:won, false)
       end
-    elsif game.result == 'black'
-      if self.team == 'red'
-        self.update_attribute(:won, false)
-      elsif self.team == 'black'
-        self.update_attribute(:won, true)
+    elsif game.result_black?
+      if team_red?
+        update_attribute(:won, false)
+      elsif team_black?
+        update_attribute(:won, true)
       end
     end
   end
-
 end

@@ -2,6 +2,8 @@
 class Game < ActiveRecord::Base
   resourcify
 
+  extend FriendlyId
+  friendly_id :game_ref
 
   attr_accessible :game_status, :result, :description, :game_manager, :players_attributes, :best_player, :game_ref,:first_killed_sherif
 
@@ -9,13 +11,9 @@ class Game < ActiveRecord::Base
   attr_accessor :gamer
 
   has_many :players, dependent: :destroy
-
   has_many :users, :through => :appointments
-
   has_many :rounds
-
   has_many :player_roles
-
   has_one :manager, dependent: :destroy
 
   accepts_nested_attributes_for :players
@@ -24,6 +22,12 @@ class Game < ActiveRecord::Base
   after_create :create_manager
 
   validates :description, presence: true
+
+  GAME_RESULT = ['red', 'black'].freeze
+  #def methods result_black? result_red?
+  GAME_RESULT.each do |type|
+    define_method("result_#{type}?") {result.to_s == type}
+  end
 
   def create_manager
     if game_manager
@@ -43,15 +47,13 @@ class Game < ActiveRecord::Base
     ::ReferenceService.new(self).create_reference!
   end
 
-  extend FriendlyId
-  friendly_id :game_ref
-
-  def self.search(search)
-    if search
-      where('result LIKE ? OR best_player LIKE ? ', "%#{search}%", "%#{search}%")
-    else
-      scoped
+  class << self
+    def search(search)
+      if search
+        where('result LIKE ? OR best_player LIKE ? ', "%#{search}%", "%#{search}%")
+      else
+        scoped
+      end
     end
   end
-
 end
