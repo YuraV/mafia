@@ -5,7 +5,7 @@ class Game < ActiveRecord::Base
   extend FriendlyId
   friendly_id :game_ref
 
-  attr_accessible :game_status, :result, :description, :game_manager, :players_attributes, :best_player, :game_ref,:first_killed_sherif
+  attr_accessible :game_status, :result, :description, :game_manager, :players_attributes, :best_player, :game_ref, :first_killed_sheriff
 
   attr_accessor :game_manager
   attr_accessor :gamer

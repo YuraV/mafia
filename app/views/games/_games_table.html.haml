@@ -13,17 +13,20 @@
       %th{:style => 'width: 10%'}
       -#%th{:style => 'width: 10%'} Update
       -#%th{:style => 'width: 10%'} Destroy
-    - @games.each do |g|
+    - @games.each do |game|
       %tr
-        %td= g.game_ref
-        %td= g.description
-        %td= g.manager.user.name
+        %td= game.game_ref
+        %td= game.description
+        %td= game.manager.user.name
         %td
-          -g.players.each do |p|
-            =image_tag "#{p.role}.jpeg", :id=> "role",:rel => 'popover', 'data-content' => "#{user_alias_by_player p}" 
-        %td= g.game_status
-        %td= g.best_player
-        %td= g.result
+          -game.players.each do |player|
+            - if player.role
+              =image_tag "#{player.role}.jpeg", :id=> "role",:rel => 'popover', 'data-content' => "#{user_alias_by_player player}"
+            - else
+              = player_name_or_alias(player)
+        %td= game.game_status
+        %td= game.best_player
+        %td= game.result
 
         %td
           .btn-group
@@ -32,15 +35,15 @@
               %span.caret
             %ul.dropdown-menu
               %li
-                = link_to game_path(g) do
+                = link_to game_path(game) do
                   %i.icon-th
                   Show
               %li
-                = link_to edit_game_path(g) do
+                = link_to edit_game_path(game) do
                   %i.icon-pencil
                   Edit
               %li
-                = link_to game_path(g), method: :delete do
+                = link_to game_path(game), method: :delete do
                   %i.icon-trash
                   Destroy
 - if can? :create, @game

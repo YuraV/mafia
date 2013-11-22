@@ -11,8 +11,16 @@ module GamesHelper
     user = User.find(player.user_id)
   if player.player_number
     "##{player.player_number}. #{user.alias} "
-    else
+  else
     "#{user.alias}"
+    end
+  end
+
+  def player_name_or_alias(player)
+    if player.user.alias
+    "#{player.user.alias},"
+    else
+      "#{player.user.name}"
     end
   end
 end

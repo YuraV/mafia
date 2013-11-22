@@ -9,8 +9,8 @@ class Player < ActiveRecord::Base
 
   attr_accessible :user_id, :game_id, :id, :role, :team, :player_number, :remark
   validates :user_id, presence: true
-  validates :role, {:inclusion => { :in => PLAYER_ROLE }, allow_blank: true}
-  validates :team, {:inclusion => { :in => PLAYER_TEAM }, allow_blank: true}
+  validates :role, :inclusion => { :in => PLAYER_ROLE }, on: :update
+  validates :team, :inclusion => { :in => PLAYER_TEAM }, on: :update
 
   delegate :result_black?, :result_red?, to: :game
 
