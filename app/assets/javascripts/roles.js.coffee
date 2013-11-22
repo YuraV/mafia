@@ -32,5 +32,3 @@ class window.Roles
       $('.show_hide_role_container').addClass('hidden')
       $('.top_145_left_160.put_role').toggleClass('hidden')
       false
-
-

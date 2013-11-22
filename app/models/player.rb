@@ -14,7 +14,6 @@ class Player < ActiveRecord::Base
 
   delegate :result_black?, :result_red?, to: :game
 
-
   #def methods  is_don? is_mafia? is_sheriff? is_citizen?
   PLAYER_ROLE.each do |type|
     define_method("is_#{type}?") {role.to_s == type}
@@ -78,9 +77,4 @@ class Player < ActiveRecord::Base
       end
     end
   end
-
-  def sherif_validation
-
-  end
-
 end

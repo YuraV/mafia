@@ -38,8 +38,8 @@ class PlayersController < ApplicationController
 
   def put_roles
     @game.update_attributes(params.fetch(:game, {}))
-    @game.players.each do |appointment|
-      appointment.set_team!
+    @game.players.each do |player|
+      player.set_team!
     end
 
     respond_with(@game, @player) do |format|
