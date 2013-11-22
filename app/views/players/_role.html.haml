@@ -10,13 +10,13 @@
 
         .role_name
           %span.role_section
-            = a_f.radio_button :role, 'Don', {id: "game_appointments_attributes_#{a_f.object.id}_role_don"}
+            = a_f.radio_button :role, 'don', {id: "game_appointments_attributes_#{a_f.object.id}_role_don"}
             = f.label "appointments_attributes_#{a_f.object.id}_role_don", "DON"
           %span.role_section
             = a_f.radio_button :role, 'mafia', {id: "game_appointments_attributes_#{a_f.object.id}_role_mafia"}
             = f.label "appointments_attributes_#{a_f.object.id}_role_mafia", "MAFIA"
           %span.role_section
-            = a_f.radio_button :role, 'sherif', {id: "game_appointments_attributes_#{a_f.object.id}_role_sherif"}
+            = a_f.radio_button :role, 'sheriff', {id: "game_appointments_attributes_#{a_f.object.id}_role_sherif"}
             = f.label "appointments_attributes_#{a_f.object.id}_role_sherif", "SHERIF"
           %span.role_section
             = a_f.radio_button :role, 'citizen', {id: "game_appointments_attributes_#{a_f.object.id}_role_citizen",checked:true}

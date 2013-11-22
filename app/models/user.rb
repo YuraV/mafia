@@ -12,13 +12,10 @@ class User < ActiveRecord::Base
 
   has_many :players
   has_many :games, :through => :appointments
-
-
   has_many :managers
 
-
-  has_many :player_roles
-  has_many :game_roles, through: :player_roles
+  validates :name, exclusion: {in: %w(admin superuser moderator),
+                              message: "%{value} is reserved.'"}
 
   after_create :set_permission!
 

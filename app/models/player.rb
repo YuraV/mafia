@@ -4,18 +4,23 @@ class Player < ActiveRecord::Base
   belongs_to :game
   belongs_to :user
 
+  PLAYER_ROLE = ['don','mafia','sheriff','citizen'].freeze
+  PLAYER_TEAM = ['red', 'black'].freeze
+
   attr_accessible :user_id, :game_id, :id, :role, :team, :player_number, :remark
   validates :user_id, presence: true
+  validates :role, {:inclusion => { :in => PLAYER_ROLE }, allow_blank: true}
+  validates :team, {:inclusion => { :in => PLAYER_TEAM }, allow_blank: true}
 
   delegate :result_black?, :result_red?, to: :game
 
-  PLAYER_ROLE = ['don','mafia','sherif','citizen',].freeze
-  #def methods  is_don? is_mafia? is_sherif? is_citizen?
+
+  #def methods  is_don? is_mafia? is_sheriff? is_citizen?
   PLAYER_ROLE.each do |type|
     define_method("is_#{type}?") {role.to_s == type}
   end
 
-  PLAYER_TEAM = ['red', 'black'].freeze
+
   #def methods team_red? team_black?
   PLAYER_TEAM.each do |type|
     define_method("team_#{type}?") {team.to_s == type}
@@ -34,7 +39,7 @@ class Player < ActiveRecord::Base
 
   def set_score!
     if game.result_red?
-      if team_red? && is_sherif?
+      if team_red? && is_sheriff?
         update_attribute(:score, 4 )
       elsif team_red?
         update_attribute(:score, 3 )
@@ -44,11 +49,11 @@ class Player < ActiveRecord::Base
         update_attribute(:score, 0 )
       end
     elsif game.result_black?
-      if team_black? && self.is_don?
+      if team_black? && is_don?
         update_attribute(:score, 5)
       elsif team_black?
         update_attribute(:score, 4)
-      elsif team_red? && is_sherif? && !game.first_killed_sherif
+      elsif team_red? && is_sherif? && !game.first_killed_sheriff
         update_attribute(:score, -1)
       elsif team_red?
         update_attribute(:score, 0)
@@ -73,4 +78,9 @@ class Player < ActiveRecord::Base
       end
     end
   end
+
+  def sherif_validation
+
+  end
+
 end
