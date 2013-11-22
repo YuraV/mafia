@@ -35,7 +35,9 @@ class window.Drag_Drop
     jQuery.event.props.push "pageY"
 
     $(".item").on("click", (e) ->
-      count = $('.selected').length
+      items1 = $('.selected').length
+      items2 = $('.item2').length
+      count = items1 + items2
       e.preventDefault()
       if count == 10
         $(this).removeClass "selected"

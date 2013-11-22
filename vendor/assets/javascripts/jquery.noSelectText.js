@@ -43,7 +43,7 @@ $(function(){
             }else if($.browser.msie){//IE
                 $(this).bind('selectstart',function(){return false;});
             }else{//Opera, etc.
-                $(this).mousedown(function(){return false;});
+                $(this).bind('selectstart',function(){return false;});
             }
         });
     });
