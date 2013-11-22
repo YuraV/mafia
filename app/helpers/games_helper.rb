@@ -7,12 +7,12 @@ module GamesHelper
     render "shared/actions", :object => g, :actions => actions
   end
 
-  def user_alias_by_player player
+  def user_alias_by_player(player)
     user = User.find(player.user_id)
   if player.player_number
     "##{player.player_number}. #{user.alias} "
     else
     "#{user.alias}"
-    end 
+    end
   end
 end

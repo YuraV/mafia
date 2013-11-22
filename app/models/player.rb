@@ -53,7 +53,7 @@ class Player < ActiveRecord::Base
         update_attribute(:score, 5)
       elsif team_black?
         update_attribute(:score, 4)
-      elsif team_red? && is_sherif? && !game.first_killed_sheriff
+      elsif team_red? && is_sheriff? && !game.first_killed_sheriff
         update_attribute(:score, -1)
       elsif team_red?
         update_attribute(:score, 0)
