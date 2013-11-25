@@ -78,7 +78,7 @@ class window.Games
 
   toggleKill: ->
     self = @
-    $('.item2 a:first').on 'click', ->
+    $('.item2 .btn_first').on 'click', ->
       console.log "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa"
       $(this).parent('.item2').toggleClass('dead')
       $(this).parent('.item2').toggleClass('alive')
