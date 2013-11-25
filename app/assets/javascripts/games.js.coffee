@@ -9,7 +9,6 @@ class window.Games
     @deadPlayer()
     @refreshDeadPlayer()
 #    @toggleKill()
-    @addColorDeadPlayer()
     @toggleKill()
 
 
@@ -63,23 +62,21 @@ class window.Games
       if $(this).data('remarks') == 4
         player = $(this).text()
         player = player.replace(/\s+/g, '');
-        select_dead = $('.dropzone .item2 a:contains('+player+')').addClass('btn-danger')
-        select_dead.next().addClass('btn-danger')
-        select_dead.parent('div').addClass('dead')
-        select_dead.parent('div').removeClass('alive')
+        select_dead = $('.dropzone .item2 a:contains('+player+')').parent('div')
+        select_dead.addClass('dead')
+        select_dead.removeClass('alive')
       else if $(this).data('remarks') != 4
         player = $(this).text()
         player = player.replace(/\s+/g, '');
         select_dead = $('.dropzone .item2 a:contains('+player+')').removeClass('btn-danger')
-        select_dead.next().removeClass('btn-danger')
         select_dead.parent('div').addClass('alive')
         select_dead.parent('div').removeClass('dead')
+    @addColorDeadPlayer()
 
 
   toggleKill: ->
     self = @
     $('.item2 .btn_first').on 'click', ->
-      console.log "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa"
       $(this).parent('.item2').toggleClass('dead')
       $(this).parent('.item2').toggleClass('alive')
       self.addColorDeadPlayer()
@@ -87,8 +84,9 @@ class window.Games
 
   addColorDeadPlayer: ->
     if $('.item2').hasClass('dead')
-       $('.item2.dead a').addClass('btn-danger')
+      $('.item2.dead .btn_first').addClass('btn-danger')
     if $('.item2').hasClass('alive')
-      $('.item2.alive a').removeClass('btn-danger')
+      $('.item2.alive .btn_first').removeClass('btn-danger')
+
 
 
