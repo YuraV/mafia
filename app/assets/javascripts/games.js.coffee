@@ -8,6 +8,9 @@ class window.Games
     @Actions()
     @deadPlayer()
     @refreshDeadPlayer()
+#    @toggleKill()
+    @addColorDeadPlayer()
+    @toggleKill()
 
 
 
@@ -45,26 +48,10 @@ class window.Games
         $('#sortable_table').html data
       false
 
-
-
-
-
-
-
-
   Actions: ->
     $(document).on 'click', 'a.dropdown-toggle', ->
       $(this).parent('div').toggleClass('open')
       return false
-
-#  roleFormVisible: ->
-#    $('.put_role').hasClass('hidden')
-#
-#  remarkFormVisible: ->
-#    $('.put_remarks').hasClass('hidden')
-#
-#  roleShowFormVisible: ->
-#    $('.show_hide_role_container').hasClass('hidden')
 
   refreshDeadPlayer: ->
     $(document).on 'click', '.put_remarks form input[type="submit"]', ->
@@ -74,13 +61,33 @@ class window.Games
   deadPlayer: ->
     $('.remark_separator .player').each ->
       if $(this).data('remarks') == 4
-
         player = $(this).text()
         player = player.replace(/\s+/g, '');
         select_dead = $('.dropzone .item2 a:contains('+player+')').addClass('btn-danger')
         select_dead.next().addClass('btn-danger')
+        select_dead.parent('div').addClass('dead')
+        select_dead.parent('div').removeClass('alive')
       else if $(this).data('remarks') != 4
         player = $(this).text()
         player = player.replace(/\s+/g, '');
         select_dead = $('.dropzone .item2 a:contains('+player+')').removeClass('btn-danger')
         select_dead.next().removeClass('btn-danger')
+        select_dead.parent('div').addClass('alive')
+        select_dead.parent('div').removeClass('dead')
+
+
+  toggleKill: ->
+    self = @
+    $('.item2').on 'click', ->
+      $(this).toggleClass('dead')
+      $(this).toggleClass('alive')
+      self.addColorDeadPlayer()
+
+
+  addColorDeadPlayer: ->
+    if $('.item2').hasClass('dead')
+       $('.item2.dead a').addClass('btn-danger')
+    if $('.item2').hasClass('alive')
+      $('.item2.alive a').removeClass('btn-danger')
+
+

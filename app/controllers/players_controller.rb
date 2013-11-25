@@ -56,7 +56,6 @@ class PlayersController < ApplicationController
     respond_with(@game, @player) do |format|
       format.html { render partial: 'games/display_remarks' if request.xhr? }
     end
-
   end
 
   private
@@ -64,5 +63,4 @@ class PlayersController < ApplicationController
   def find_game
     @game = Game.find(params[:game_id])
   end
-
 end
