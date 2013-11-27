@@ -1,0 +1,27 @@
+.top_145_left_160.hidden.put_remarks
+  = form_for @game, :url => put_remarks_game_players_path(@game) do |f|
+    = f.fields_for :players do |a_f|
+      - unless a_f.object_id.nil?
+        %div
+          .player
+            = a_f.object.user.name
+          %span.role_section
+            = a_f.radio_button :remark, '0', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_0"}
+            = f.label "appointments_attributes_#{a_f.object.id}_remarks_0", "0"
+          %span.role_section
+            = a_f.radio_button :remark, '1', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_1"}
+            = f.label "appointments_attributes_#{a_f.object.id}_remarks_1", "1"
+          %span.role_section
+            = a_f.radio_button :remark, '2', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_2"}
+            = f.label "appointments_attributes_#{a_f.object.id}_remarks_2", "2"
+          %span.role_section
+            = a_f.radio_button :remark, '3', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_3"}
+            = f.label "appointments_attributes_#{a_f.object.id}_remarks_3", "3"
+          %span.role_section
+            = a_f.radio_button :remark, '4', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_4"}
+            = f.label "appointments_attributes_#{a_f.object.id}_remarks_4", "4"
+    = f.submit 'Set Remarks', class: 'btn'
+:javascript
+  $(function(){
+    new Remarks();
+  })

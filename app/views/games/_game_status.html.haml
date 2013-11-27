@@ -1,0 +1,17 @@
+
+.finish_game
+  .game_status
+    Game Status:
+    .game_status_radio
+      = f.radio_button :game_status, 'open', {id: "game_open_game"}
+      = f.label "open_game", 'open'
+      = f.radio_button :game_status, 'closed', {id: "game_closed_game"}
+      = f.label "closed_game", 'closed'
+  .game_status
+    Team won:
+    .game_status_radio
+      = f.radio_button :result, 'red', {id: "game_won_red"}
+      = f.label "won_red", 'red'
+      = f.radio_button :result, 'black', {id: "game_won_black"}
+      = f.label "won_black", 'black'
+      = f.input :first_killed_sheriff
