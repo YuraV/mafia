@@ -1,0 +1,21 @@
+%ul.nav.nav-tabs
+  %li.active
+    = link_to 'Games'
+  %li
+    = link_to 'Scores', scores_path
+  - if can? :manage_roles, @user
+    %li
+      = link_to 'Users', users_path
+%h4 Games list
+
+= form_tag @game, method: :get,class: 'form-search', id: 'search' do
+  .input-append
+    = text_field_tag :search, params[:search], class: 'span2 search-query'
+    = submit_tag 'Search', class: 'btn'
+#sortable_table= render 'games/games_table'
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+-#- user_role
+- if current_user
+  = link_to "Mafia", root_path, :class => 'brand'
+- else
+  = link_to "Mafia", games_path, :class => 'brand'
+%ul.nav.pull-right
+  - if user_signed_in?
+    %li{:class=>(params[:controller]=="users"&&params[:action]=="show" ? "active" : "")}
+      = link_to current_user.name
+    %li
+      = link_to t("session.logout"), destroy_user_session_path, :method=>'delete'
+    %li
+      = link_to t("account.edit"), edit_user_registration_path
+  - else
+    %li
+      = link_to  t("session.login"), new_user_session_path
+    %li
+      = link_to t("account.signup"), new_user_registration_path
+%ul.nav.pull-left

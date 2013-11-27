@@ -1,0 +1,4 @@
+= simple_form_for @game do |f|
+  = f.input :description
+  = render 'games/game_status', f: f
+  = f.submit

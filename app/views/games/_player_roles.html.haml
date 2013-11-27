@@ -1,0 +1,9 @@
+.top_145_left_160.show_hide_role_container.hidden
+  - @game.players.each do |player|
+    %div
+      .player_div
+        .player
+          = player.user.alias
+      .display_role_div
+        %span.display_role
+          = player.role

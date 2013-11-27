@@ -1,0 +1,40 @@
+%table.table.table-striped.table-bordered.bordered.zebra
+  %thead
+    %tr
+      %th= sortable 'id', 'ID'
+
+      %th= sortable 'alias', 'Name'
+
+      %th
+        Played
+      %th
+        Won
+      %th
+        Won Red
+      %th
+        Won Black
+      %th
+        Score
+      %th
+        Rate
+
+    - @users.each do |user|
+
+      %tr
+        %td
+          = user.id
+        %td
+          = user.alias
+        %td
+          = overall_games(user)
+        %td
+          = won(user)
+        %td.red
+          = red_score(user)
+        %td.maf
+          = black_score(user)
+        %td
+          = points(user)
+        %td
+          = number_with_precision(ratio(user), precision: 3, significant: true)
+#pagination= will_paginate @users
