@@ -36,6 +36,12 @@
           Best Player:
           %strong
             = @game.best_player
+  .clock_widget.hidden
+    .clock
+    .start START CLOCK
+    .stop STOP CLOCK
+    .reset RESET
+  .toggleShowClock Show / Hide Clock
 
 = render  @game.status_open? ? 'games/drag_drop' :  'games/game_players'
 
@@ -52,11 +58,7 @@
       = link_to 'Rolify', set_role_game_player_path(@game, @players), rel: '', class: 'btn rolify'
     .remove_all
       = link_to 'Remove All', destroy_all_game_player_path(@game, @players), method: :delete, class: 'btn'
-    -#.remove_all
-    -#  = link_to 'Show/Hide Roles', '', class: 'btn show_hide_role'
-
-
--#= link_to 'Create Round', new_game_round_path(@game)
+      -#= link_to 'Show/Hide Roles', '', class: 'btn show_hide_role'
 
 :javascript
   $(function(){
@@ -65,3 +67,34 @@
     new ValidateRolesUniqurness();
   })
 
+  $(document).ready(function() {
+      var clock;
+
+      clock = $('.clock').FlipClock(60, {
+          clockFace: 'MinuteCounter',
+          countdown: true,
+          callbacks: {
+              stop: function() {
+              }
+          }
+      });
+      clock.stop();
+      var time  = clock.getTime();
+      $('.start').on('click', function(){
+
+          clock.setTime(time.time);
+          clock.start();
+      });
+      $('.stop').on('click', function(){
+        clock.stop();
+      });
+
+      $('.reset').on('click', function(){
+        clock.stop();
+        clock.setTime(60);
+      });
+
+      $('.toggleShowClock').on('click',function(){
+        $('.clock_widget').toggleClass('hidden');
+      });
+  });

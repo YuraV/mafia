@@ -13,6 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.facebox
+//= require flipclock/libs/base.js
+//= require flipclock/flipclock.js
+//= require flipclock/faces/hourlycounter.js
+//= require flipclock/faces/minutecounter.js
 //= require jquery.noSelectText
-//= require bootstrap 
+//= require bootstrap
 //= require_tree .

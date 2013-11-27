@@ -38,6 +38,8 @@ gem 'underscore-rails'
 gem 'thin'
 gem 'cancan'
 gem 'rolify'
+gem 'bourbon'
+
 
 group :development do
   gem 'quiet_assets'
