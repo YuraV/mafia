@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131120121524) do
+ActiveRecord::Schema.define(:version => 20131128202650) do
 
   create_table "games", :force => true do |t|
     t.string   "description"
@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(:version => 20131120121524) do
     t.integer  "game_id"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
-    t.string   "role"
     t.integer  "score"
     t.string   "team"
     t.integer  "player_number"
     t.boolean  "won"
     t.integer  "remark",        :default => 0
+    t.string   "role"
   end
 
   add_index "players", ["user_id"], :name => "index_appointments_on_user_id"

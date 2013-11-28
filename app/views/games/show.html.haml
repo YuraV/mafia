@@ -4,7 +4,7 @@
       Game Description:
       %strong
         = @game.description
-        %span.finish
+        %span.finish.btn.btn-inverse
           = link_to 'Finish Game', game_best_player_path(@game), rel: 'facebox' if can? :update, @game
 
   %div
@@ -38,10 +38,10 @@
             = @game.best_player
   .clock_widget.hidden
     .clock
-    .start START CLOCK
-    .stop STOP CLOCK
-    .reset RESET
-  .toggleShowClock Show / Hide Clock
+    .start.btn.btn-success START 
+    .stop.btn.btn-inverse STOP
+    .reset.btn.btn-danger RESET
+  .toggleShowClock.btn.btn-primary Show / Hide Clock
 
 = render  @game.status_open? ? 'games/drag_drop' :  'games/game_players'
 
