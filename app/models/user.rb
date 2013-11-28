@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :players
-  has_many :games, :through => :appointments
+  has_many :games, :through => :players
   has_many :managers
 
   validates :name, exclusion: {in: %w(admin superuser moderator),

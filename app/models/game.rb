@@ -11,9 +11,7 @@ class Game < ActiveRecord::Base
   attr_accessor :gamer
 
   has_many :players, dependent: :destroy
-  has_many :users, :through => :appointments
-  has_many :rounds
-  has_many :player_roles
+  has_many :users, :through => :players
   has_one :manager, dependent: :destroy
 
   accepts_nested_attributes_for :players
