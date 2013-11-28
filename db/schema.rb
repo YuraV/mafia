@@ -13,10 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20131120121524) do
 
-  create_table "appointments", :force => true do |t|
-    t.string "name"
-  end
-
   create_table "games", :force => true do |t|
     t.string   "description"
     t.string   "result"

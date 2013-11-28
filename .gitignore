@@ -23,7 +23,6 @@ config/database.yml
 config/on_app.yml
 config/dashboard_client.yml
 config/storage.yml
-config/database.yml
 config/locales/zu*.*
 db/*.sqlite3
 config/initializers/better_errors.rb
