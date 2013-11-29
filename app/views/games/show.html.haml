@@ -4,8 +4,9 @@
       Game Description:
       %strong
         = @game.description
-        %span.finish.btn.btn-inverse
-          = link_to 'Finish Game', game_best_player_path(@game), rel: 'facebox' if can? :update, @game
+        - if can? :update, @game
+          %span.finish.btn.btn-inverse
+            = link_to 'Finish Game', game_best_player_path(@game), rel: 'facebox' 
 
   %div
     %span
