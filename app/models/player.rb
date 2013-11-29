@@ -26,15 +26,22 @@ class Player < ActiveRecord::Base
   end
 
   def set_team!
-    if self.is_don?
-      self.update_attribute(:team, 'black')
-    elsif self.is_mafia?
-      self.update_attribute(:team, 'black')
+    if is_don? || is_mafia?
+      update_attribute(:team, 'black')
     else
-      self.update_attribute(:team, 'red')
+      update_attribute(:team, 'red')
     end
-
   end
+
+  def opts
+    if is_mafia?
+      { system_email:         'app@onapp.com',
+        system_support_email: 'support@onapp.com',
+        system_host:          'onapp.com'
+      }.any? { |opt, val| OnApp.configuration.send(opt) == val }
+    end
+  end
+
 
   def set_score!
     if game.result_red?
