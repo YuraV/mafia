@@ -7,7 +7,7 @@ class Player < ActiveRecord::Base
   PLAYER_ROLE = ['don','mafia','sheriff','citizen'].freeze
   PLAYER_TEAM = ['red', 'black'].freeze
 
-  attr_accessible :user_id, :game_id, :id, :role, :team, :player_number, :remark
+  attr_accessible :user_id, :game_id, :id, :role, :team, :player_number, :remark, :kill, :nominate
   validates :user_id, presence: true
   validates :role, :inclusion => { :in => PLAYER_ROLE }, on: :update
   validates :team, :inclusion => { :in => PLAYER_TEAM }, on: :update

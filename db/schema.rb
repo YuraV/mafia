@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131128202650) do
+ActiveRecord::Schema.define(:version => 20131130174550) do
 
   create_table "games", :force => true do |t|
     t.string   "description"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(:version => 20131128202650) do
     t.boolean  "won"
     t.integer  "remark",        :default => 0
     t.string   "role"
+    t.boolean  "kill"
+    t.boolean  "nominate"
   end
 
   add_index "players", ["user_id"], :name => "index_appointments_on_user_id"

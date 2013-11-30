@@ -21,11 +21,12 @@
             = a_f.radio_button :remark, '4', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_4"}
             = f.label "appointments_attributes_#{a_f.object.id}_remarks_4", "4"
           %span.role_section
-            = a_f.radio_button :remark, '5', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_5"}
-            = f.label "appointments_attributes_#{a_f.object.id}_remarks_5", "Nominate"
-          %span.role_section
-            = a_f.radio_button :remark, '6', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_6"}
-            = f.label "appointments_attributes_#{a_f.object.id}_remarks_6", "Kill"
+            = a_f.check_box :kill, {id: "game_appointments_attributes_#{a_f.object.kill}_#{a_f.object.id}K"}
+            = f.label "appointments_attributes_#{a_f.object.kill}_#{a_f.object.id}K", "K"
+          %span.role_section  
+            = a_f.check_box :nominate, {id: "game_appointments_attributes_#{a_f.object.nominate}_#{a_f.object.id}N"}
+            = f.label "appointments_attributes_#{a_f.object.nominate}_#{a_f.object.id}N", "N"
+        
     = f.submit 'Set Remarks/Nominate/Kill', class: 'btn'
 :javascript
   $(function(){

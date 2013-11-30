@@ -1,7 +1,7 @@
 .game_content
   %div
     %span
-      Game Description:
+      Description:
       %strong
         = @game.description
         - if can? :update, @game
@@ -10,18 +10,18 @@
 
   %div
     %span
-      Game Manager:
+      Manager:
       %strong
         = @game.manager.user.name
 
   %div{data: {id: "#{@game.id}"}, class: 'game'}
     %span
-      Game ID:
+      ID:
       %strong
         = @game.id
   %div
     %span
-      Game Status:
+      Status:
       %strong
         = @game.game_status
   - unless @game.status_open?
@@ -43,23 +43,23 @@
     .stop.btn.btn-inverse STOP
     .reset.btn.btn-danger RESET
   .toggleShowClock.btn.btn-primary Show / Hide Clock
+.row
+  = render  @game.status_open? ? 'games/drag_drop' :  'games/game_players'
 
-= render  @game.status_open? ? 'games/drag_drop' :  'games/game_players'
-
-- if @game.players.size >= 10 && @game.status_open?
-  = render 'games/display_remarks'
-  = render 'players/remarks'
-  = render 'players/role'
-  = render 'games/player_roles'
-  -#= render 'games/timer'
-
-- if @game.players.present? && @game.status_open?
-  .nav_button
-    .remove_all
-      = link_to 'Rolify', set_role_game_player_path(@game, @players), rel: '', class: 'btn rolify'
-    .remove_all
-      = link_to 'Remove All', destroy_all_game_player_path(@game, @players), method: :delete, class: 'btn'
-      -#= link_to 'Show/Hide Roles', '', class: 'btn show_hide_role'
+  - if @game.players.size >= 10 && @game.status_open?
+    = render 'games/display_remarks'
+    = render 'players/remarks'
+    = render 'players/role'
+    = render 'games/player_roles'
+    -#= render 'games/timer'
+.row
+  .span6.pull-right
+    - if @game.players.present? && @game.status_open?
+      .remove_all
+        = link_to 'Rolify', set_role_game_player_path(@game, @players), rel: '', class: 'btn rolify'
+      .remove_all
+        = link_to 'Remove All', destroy_all_game_player_path(@game, @players), method: :delete, class: 'btn'
+        -#= link_to 'Show/Hide Roles', '', class: 'btn show_hide_role'
 
 :javascript
   $(function(){
