@@ -4,7 +4,7 @@
       - unless a_f.object_id.nil?
         %div
           .player
-            = a_f.object.user.name
+            = a_f.object.player_number
           %span.role_section
             = a_f.radio_button :remark, '0', {id: "game_appointments_attributes_#{a_f.object.id}_remarks_0"}
             = f.label "appointments_attributes_#{a_f.object.id}_remarks_0", "0"

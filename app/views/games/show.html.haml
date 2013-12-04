@@ -6,7 +6,7 @@
         = @game.description
         - if can? :update, @game
           %span.finish.btn.btn-inverse
-            = link_to 'Finish Game', game_best_player_path(@game), rel: 'facebox' 
+            = link_to 'Finish Game', game_best_player_path(@game), rel: 'facebox'
 
   %div
     %span
@@ -39,7 +39,7 @@
             = @game.best_player
   .clock_widget.hidden
     .clock
-    .start.btn.btn-success START 
+    .start.btn.btn-success START
     .stop.btn.btn-inverse STOP
     .reset.btn.btn-danger RESET
   .toggleShowClock.btn.btn-primary Show / Hide Clock
@@ -52,8 +52,7 @@
     = render 'players/role'
     = render 'games/player_roles'
     -#= render 'games/timer'
-.row
-  .span6.pull-right
+  .span6.pull-right.main_buttons
     - if @game.players.present? && @game.status_open?
       .remove_all
         = link_to 'Rolify', set_role_game_player_path(@game, @players), rel: '', class: 'btn rolify'
