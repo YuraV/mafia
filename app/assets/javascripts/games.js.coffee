@@ -9,7 +9,6 @@ class window.Games
     @deadPlayer()
     @refreshDeadPlayer()
 #    @toggleKill()
-    @toggleKill()
 
 
 
@@ -57,15 +56,16 @@ class window.Games
       $('.item2').each ->
         $(this).children('a').addClass('btn-danger') if $(this).data('remarks') == 4
 
+
   deadPlayer: ->
     $('.remark_separator .player').each ->
-      if $(this).data('remarks') == 4
+      if $(this).data('remarks') == 4 or $(this).data('kill') == true
         player = $(this).text()
         player = player.replace(/\s+/g, '');
         select_dead = $('.dropzone .item2 a:contains('+player+')').parent('div')
         select_dead.addClass('dead')
         select_dead.removeClass('alive')
-      else if $(this).data('remarks') != 4
+      else if $(this).data('remarks') != 4 and $(this).data('kill') != true
         player = $(this).text()
         player = player.replace(/\s+/g, '');
         select_dead = $('.dropzone .item2 a:contains('+player+')').removeClass('btn-danger')

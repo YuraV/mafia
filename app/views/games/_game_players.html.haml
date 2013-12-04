@@ -1,6 +1,6 @@
 .game_players
   - @game.players.each do |player|
-    .btn.item_finish{disabled: true}
+    .span2.well
       %br
         %b name:
         = "#{player.user.name}"

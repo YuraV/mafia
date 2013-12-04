@@ -25,3 +25,4 @@ Another way: <br>
 2. After set admin role for your user via rails c using next command <br>
 <b>user.add_role('admin')<b>
 test
+TODO : kill/nominate feature
