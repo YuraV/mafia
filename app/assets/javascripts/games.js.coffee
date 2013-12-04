@@ -9,7 +9,6 @@ class window.Games
     @deadPlayer()
     @refreshDeadPlayer()
 #    @toggleKill()
-    @toggleKill()
 
 
 

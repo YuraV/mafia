@@ -8,7 +8,6 @@ class Game < ActiveRecord::Base
   attr_accessible :game_status, :result, :description, :game_manager, :players_attributes, :best_player, :game_ref, :first_killed_sheriff
 
   attr_accessor :game_manager
-  attr_accessor :gamer
 
   has_many :players, dependent: :destroy
   has_many :users, :through => :players
@@ -34,11 +33,11 @@ class Game < ActiveRecord::Base
   end
 
   def status_open?
-     self.game_status == 'open'
+     game_status == 'open'
   end
 
   def game_result
-    self.result
+    result
   end
 
   def generate_game_ref

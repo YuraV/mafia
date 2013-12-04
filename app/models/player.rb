@@ -71,17 +71,27 @@ class Player < ActiveRecord::Base
 
   def won!
     if game.result_red?
-      if team_red?
-        update_attribute(:won, true)
-      elsif team_black?
-        update_attribute(:won, false)
-      end
+      red_winner
     elsif game.result_black?
-      if team_red?
-        update_attribute(:won, false)
-      elsif team_black?
-        update_attribute(:won, true)
-      end
+      black_winner
+    end
+  end
+
+  private
+
+  def red_winner
+    if team_red?
+      update_attribute(:won, true)
+    elsif team_black?
+      update_attribute(:won, false)
+    end
+  end
+
+  def black_winner
+    if team_red?
+      update_attribute(:won, false)
+    elsif team_black?
+      update_attribute(:won, true)
     end
   end
 end
