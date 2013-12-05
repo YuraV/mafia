@@ -1,15 +1,14 @@
 .div2.alert.alert-info
   Remarks:
   - @game.players.each do |player|
-    - if player.remark.present? && (player.kill || player.remark ==4)
+    - if player.remark.present? && (player.remark != 0 || player.kill)
       .remark_separator
+        №
+        = player.player_number
         .player{data:{remarks: player.remark,kill: player.kill.to_s}}
-          №
-          = player.player_number
           = player.user.name
-
         .remark
-          = player.remark if player.remark != 0
+          = player.remark if player.remark
           = "Dead" if player.kill
 
         .kill
@@ -17,3 +16,4 @@
   .set_remarks
     %strong
       = link_to 'Make A Remark', '', class: 'btn remark_link'
+

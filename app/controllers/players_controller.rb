@@ -55,6 +55,7 @@ class PlayersController < ApplicationController
     @game.update_attributes(params.fetch(:game, {}))
     respond_with(@game, @player) do |format|
       format.html { render partial: 'games/display_remarks' if request.xhr? }
+      format.json
     end
   end
 
