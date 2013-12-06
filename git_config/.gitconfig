@@ -1,0 +1,49 @@
+[user]
+	name = Yurii Vodolyak
+	email = yurii.vodolyak@onapp.com
+[core]
+	autocrlf = input
+	editor = vim
+[color]
+	ui = auto
+[pull]
+	rebase = true
+ [alias]
+
+  history = log -u -1
+
+  # http://net.tutsplus.com/tutorials/tools-and-tips/git-tips-from-the-pros/
+
+  # co: with a feature branch workflow, you'll be moving between branches regularly. Save yourself six characters every time.
+
+  co = checkout
+
+  # ds: it is always best practice to review the changes you're going to commit before making the actual commit. This allows you to catch typos, accidental inclusion of sensitive data and grouping code into logical groups. Stage your changes and then use git ds to see the diff of those changes.
+
+  ds = diff --staged
+
+  # st: you should be pretty familiar with the verbose output of git status. At some point you'll want to skip all the formality and get down to business. This alias shows the short form of status and includes the branch details.
+
+  st = status -sb
+
+  # amend: did you forget to include a file with your last commit, or maybe you had one tweak you needed to make? Amend the staged changes to your last commit.
+
+  amend = commit --amend -C HEAD
+
+  # undo: sometimes, amending your last commit isn't enough and you'll need to undo it instead. This alias will step back one commit and leave the changes from that commit staged. Now you can make additional changes, or recommit with a new message.
+
+  undo = reset --soft HEAD^
+
+  # ls: working on a codebase with a group of developers means trying to keep up with what people are working on. This alias will provide a one line git log including date and committer name.
+
+  ls = log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short
+
+  # standup: this alias is great for reviewing what you worked on yesterday for any type of daily standup, or just to refresh your memory in the morning.
+
+  standup = log --since '1 day ago' --oneline --author yurii.vodolyak@onapp.com
+
+  # graph: a complex git history can be difficult to review in a straight line. Using the graph flag shows you how and when commits were added to the current brancH.
+
+  graph = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
+
+  sourcetree = !open -a SourceTree .
