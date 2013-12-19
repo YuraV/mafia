@@ -15,7 +15,7 @@ class window.Games
   sortFunction: ->
     $(document).delegate '#sortable_table th a', 'click', ->
       $.ajax $(this).prop('href'),
-        dataType: 'html',
+        dataType: 'html'
         type: 'GET'
       .success (data) ->
           $('#sortable_table').html data
@@ -24,7 +24,7 @@ class window.Games
   paginationFunction: ->
     $(document).on 'click', '#pagination a', ->
       $.ajax $(this).prop('href'),
-        dataType: 'html',
+        dataType: 'html'
         type: 'GET'
       .success (data) ->
           $('#sortable_table').html data
@@ -39,9 +39,9 @@ class window.Games
       formAction = $('#search').attr('action')
       searchData = $(this).val()
       $.ajax
-        dataType: 'HTML',
-        type: 'GET',
-        url: formAction + '?utf8=✓&search=' + searchData,
+        dataType: 'HTML'
+        type: 'GET'
+        url: formAction + '?utf8=✓&search=' + searchData
       .success (data) ->
         $('#sortable_table').html data
       false
@@ -62,13 +62,13 @@ class window.Games
       if $(this).data('remarks') == 4 or $(this).data('kill') == true
         player = $(this).text()
         player = player.replace(/\s+/g, '');
-        select_dead = $('.dropzone .item2 a:contains('+player+')').parent('div')
+        select_dead = $(".dropzone .item2.#{player}")
         select_dead.addClass('dead')
         select_dead.removeClass('alive')
-      else if $(this).data('remarks') != 4 and $(this).data('kill') != true
+      else if $(this).data('remarks') != 4 or $(this).data('kill')
         player = $(this).text()
         player = player.replace(/\s+/g, '');
-        select_dead = $('.dropzone .item2 a:contains('+player+')').removeClass('btn-danger')
+        select_dead = $(".dropzone .item2.#{player}").removeClass('btn-danger')
         select_dead.parent('div').addClass('alive')
         select_dead.parent('div').removeClass('dead')
     @addColorDeadPlayer()

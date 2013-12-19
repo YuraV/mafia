@@ -11,8 +11,8 @@ class window.Remarks extends window.Games
     $('.put_remarks form.edit_game').on 'submit', ->
       url = $(this).attr('action')
       $.ajax
-        dataType: 'HTML',
-        type: 'PUT',
+        dataType: 'HTML'
+        type: 'PUT'
         url: url
         data: $(this).serialize()
       .success (data) ->

@@ -3,8 +3,8 @@
   %strong
     - @game.players.each do |player|
       - unless player.id.nil?
-        .btn-group.item2.alive
-          %a.btn.btn-primary.btn_first
+        %div{class: "#{player.user.name} btn-group item2 alive"}
+          %a{class: "btn btn-primary btn_first"}
             %i.icon-user.icon-white
             #{player.user.name}
             № #{player.player_number}

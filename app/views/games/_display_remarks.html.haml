@@ -2,7 +2,7 @@
   Remarks:
   - @game.players.each do |player|
     - if player.remark.present? && (player.remark != 0 || player.kill)
-      .remark_separator
+      %div{class: "#{player.user.name} remark_separator"}
         №
         = player.player_number
         .player{data:{remarks: player.remark,kill: player.kill.to_s}}
