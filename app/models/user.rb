@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def set_permission!
-    self.add_role 'player'
+    add_role 'player'
   end
 
 end

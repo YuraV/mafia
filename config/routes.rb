@@ -5,14 +5,9 @@ Mafia::Application.routes.draw do
     resources :player_roles
   end
 
-
-
-
   resources :games do
     get :best_player
-
     resources :rounds
-
     resources :players do
       collection do
         post :create_bunch
@@ -26,15 +21,9 @@ Mafia::Application.routes.draw do
         delete :destroy_all
         get :get_remarks
       end
-
     end
-
   end
 
-
-
-
   resources :scores
-
   root :to => 'games#index'
 end

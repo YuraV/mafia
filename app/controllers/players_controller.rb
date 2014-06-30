@@ -38,10 +38,7 @@ class PlayersController < ApplicationController
 
   def put_roles
     @game.update_attributes(params.fetch(:game, {}))
-    @game.players.each do |player|
-      player.set_team!
-    end
-
+    PlayerService.set_team!(@game.players)
     respond_with(@game, @player) do |format|
       format.html { render partial: 'games/drop_zone' if request.xhr? }
     end
